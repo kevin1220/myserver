@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title></title>
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telphone=no, email=no">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="bg"><img src="images/bg.jpg" alt=""></div>
+    <div class="codeBox">
+        <div class="gsn">恭喜</div><br><div class="verifyCode_title">您的验证码：<div class="verifyCode myscale"></div></div><div class="tips">请把此界面截图下来,以便使用此验证码</div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="js/tools.js"></script>
+    <script type="text/javascript">
+    window.onload=function(){
+        jssdk('4月1日天河城20米巨屏表白，点击报名！', '点击填写爱的宣言，4.1下午会在天河城大屏幕直播！', 'http://www.wit-orange.com/hrth', 'http://www.wit-orange.com/hrth/images/shareimg.png');
+        var storage = window.localStorage;
+        var userinfo = JSON.parse(storage.getItem("userinfo"));
+        document.querySelector('.verifyCode').innerHTML = userinfo.verifyCode;
+
+    }
+    </script>
+</body>
+
+</html>

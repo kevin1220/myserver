@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>打了100000+人的脸，你敢来试试吗？</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="css/animate.min.css">
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		
+		<div class="page_0 page">
+			<img src="img/2P/mans.png" alt="" class="page0_mans animated fadeIn">
+			<img src="img/2P/text.png" alt="" class="page0_text tada animated">
+			<div class="page0_pannel">
+				<img src="img/2P/pannel_text1.png" alt="" class="page0_pannel_text1 bounceIn animated">
+				<div class="page0_pannel_text2">
+					<input type="tel">
+				</div>
+				<img src="img/2P/test_btn.png" alt="" class="page0_test_btn">
+			</div>
+		</div>
+		<div class="page_1 page">
+			<img src="img/3P/text.png" alt="" class="page1_text bounceIn animated">
+			<div class="page1_pannel zoomIn"><img src="img/3P/pannel_text.png" alt="" class="page1_pannel_text"></div>
+			<img src="img/3P/man.png" alt="" class="page1_man rollIn animated">
+		</div>
+		<div class="page_2 page">
+			<img src="img/4P/text.png" alt="" class="page2_text bounceIn animated">
+			<div class="page2_pannel zoomIn"><img src="img/4P/pannel_text.png" alt="" class="page2_pannel_text"></div>
+			<img src="img/4P/man.png" alt="" class="page2_man rollIn animated">
+		</div>
+		<div class="page_3 page">
+			<img src="img/5P/text.png" alt="" class="page3_text bounceIn animated">
+			<div class="page3_pannel zoomIn"><img src="img/5P/pannel_text.png" alt="" class="page3_pannel_text"></div>
+			<img src="img/5P/man.png" alt="" class="page3_man rollIn animated">
+		</div>
+		<div class="floatdiv2">
+			<img src="img/retest.png" alt="" class="retest"><img src="img/toh5.png" alt="" class="toh5">
+		</div>
+		<div class="floatdiv"><span>正在测试...</span><img src="img/loading.gif" alt=""></div>
+		<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/tools.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				jssdk();
+
+				var index =Math.ceil(Math.random()*3);
+				$(function(){
+					$('.page0_test_btn').on('click',function(){
+						chooseIMG();
+					});
+				})
+				function chooseIMG(){
+					wx.chooseImage({
+					    count: 1, // 默认9
+					    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+					    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+					    success: function (res) {
+					    	$('.floatdiv').css('display','block');
+					    	setTimeout(function(){
+					    		$('.floatdiv').css('display','none');
+					    		$('.page_0').css('display','none');
+								$('.page_'+index).css('display','block');
+								setTimeout(function(){
+									$('.floatdiv2').css('display','block');
+									$('.retest').on('click',function(){
+										history.go(0);
+									});
+									$('.toh5').on('click',function(){
+										location.href = "http://viewer.maka.im/k/RDT0NDUR";
+									});
+								},7000);
+					    	},1000);
+					        
+					    }
+					});
+				}
+
+			})
+		</script>
+	</body>
+</html>

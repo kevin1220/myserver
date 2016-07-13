@@ -1,0 +1,508 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+}
+
+.bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -999;
+}
+
+.logo {
+    width: 45%;
+    margin-left: 0;
+}
+
+.title_big {
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 2%;
+    animation-delay: 0.5s;
+    -webkit-animation-delay: 0.5s;
+    animation-duration: 1.3s;
+    -webkit-animation-duration: 1.3s;
+    animation-timing-function: ease;
+    -webkit-animation-timing-function: ease;
+}
+
+.title_small {
+    margin-left: 25%;
+    width: 50%;
+    margin-top: -2%;
+}
+
+.form1 {
+    text-align: center;
+}
+
+span.form_title {
+    font-size: 0.8em;
+    font-family: "微软雅黑";
+    font-weight: bold;
+}
+
+.form_body {
+    margin-top: 0.7em;
+    margin-left: 15%;
+    border: 1px solid #D2B765;
+    width: 70%;
+    padding-top: 0.6em;
+    padding-bottom: 0.3em;
+    font-family: "微软雅黑";
+    border-radius: 0.5em;
+}
+
+.name {
+    width: 70%;
+    margin-left: 15%;
+}
+
+.name_lable {
+    width: 44%;
+    float: left;
+    display: inline-block;
+    font-size: 1em;
+}
+
+.name_input {
+    width: 54%;
+    display: inline-block;
+}
+
+.name_input input {
+    width: 100%;
+    border-radius: 0;
+}
+
+.tel {
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 0.5em;
+}
+
+.tel_lable {
+    width: 44%;
+    float: left;
+    display: inline-block;
+    font-size: 1em;
+}
+
+@media screen (max-width: 480px) {
+    .name {
+        font-size: 0.6em;
+    }
+    .tel {
+        font-size: 0.6em;
+    }
+}
+
+.tel_input {
+    width: 54%;
+    display: inline-block;
+}
+
+.tel_input input {
+    width: 100%;
+    border-radius: 0;
+}
+
+.warming {
+    margin-left: 6%;
+    width: 58%;
+    margin-top: 2%;
+}
+
+.title_small {
+    margin-left: 25%;
+    width: 50%;
+}
+
+.warming {
+    margin-left: 7%;
+    width: 58%;
+}
+
+.info {
+    float: left;
+    width: 76.5%;
+    display: inline-block;
+}
+
+.hrinfo {
+    margin-left: 7%;
+    width: 57%;
+}
+
+.qrcode {
+    width: 23.5%;
+    display: inline-block;
+}
+
+
+/*loading*/
+
+.loading {
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 50%;
+    text-align: center
+}
+
+.progress {
+    text-align: center;
+}
+
+input {
+    border: 0px;
+    border-bottom: 1px solid #000;
+    padding-top: 0.3em;
+    /*padding-bottom: 0.3em;*/
+    background-color: transparent;
+    padding-left: 0.5em;
+}
+
+input::-webkit-input-placeholder {
+    font-size: 1.1em;
+}
+
+input::input-placeholder {
+    font-size: 1.1em;
+}
+
+.submit {
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 4%;
+}
+
+.light {
+    position: absolute;
+    top: -7%;
+    z-index: -666;
+}
+
+.share_btn {
+    width: 46%;
+    margin-top: 1em;
+    margin-left: 27%;
+}
+
+
+/*code.html*/
+
+.gsn {
+    display: inline-block;
+    color: rgba(255, 0, 0, 1);
+    font-size: 1em;
+    
+}
+
+.codeBox {
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 20%;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 0.5em;
+    color: rgba(100, 100, 100, 1);
+}
+
+.verifyCode_title {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.tips {
+    width: 80%;
+    font-size: 0.8em;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7em;
+    margin-top: 15%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-radius: 0.5em;
+    background-color: rgba(0,0,0,0.1);
+}
+
+.verifyCode {
+    margin-top: 1em;
+    display: inline-block;
+    color: rgba(255,0,0,1);
+    animation-delay: 0.5s;
+    -webkit-animation-delay: 0.5s;
+    animation-duration: 1.3s;
+    -webkit-animation-duration: 1.3s;
+    animation-timing-function: ease;
+    -webkit-animation-timing-function: ease;
+}
+
+.rewarder_name {
+    display: inline-block;
+    font-style: 1.3em;
+}
+
+
+/*ckeck.html*/
+
+.form_group2 {
+    margin-top: 50%;
+    width: 80%;
+    text-align: center;
+    margin-left: 10%;
+    border: 1px solid #faa;
+    padding-top: 1em;
+    border-radius: 0.5em;
+    padding-bottom: 1em;
+}
+
+.form_title2 {
+    font-family: "宋体";
+    color: rgba(100, 100, 100, 1);
+}
+
+.verifyCode_input2>input {
+    border: 1px solid #faa;
+    font-size: 0.8em;
+    padding: 0.5em;
+}
+
+.verifyCode_input2 {
+    margin-top: 4%;
+}
+
+.submit2 {
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 1em;
+}
+
+
+/*浮层样式*/
+
+.float {
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 50%;
+}
+
+.float_bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.float_arrow {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+/*弹出框样式*/
+
+.dialog {
+    width: 80%;
+    position: absolute;
+    z-index: 111;
+    left: 5%;
+    top: 20%;
+    border-radius: 1em;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    color: rgba(255, 255, 255, 1);
+    display: none;
+}
+
+.dialog .ok {
+    margin-top: 1em;
+    color: rgba(0, 255, 0, 1);
+}
+
+.arrow {
+    position: absolute;
+    width: 10%;
+    top: 87%;
+    left: 45%;
+    z-index: 2000;
+    opacity: 0.3;
+}
+
+
+/*自定义动画*/
+
+.spread {
+    animation-name: spread;
+    -webkit-animation-name: spread;
+}
+
+@-webkit-keyframes spread {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 0;
+    }
+}
+
+@keyframes spread {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 0;
+    }
+}
+
+.myscale {
+    animation-name: myscale;
+    -webkit-animation-name: myscale;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes myscale {
+    0% {
+        -webkit-transform: scale(1, 1);
+        opacity: 1;
+    }
+    50% {
+        -webkit-transform: scale(1.5, 1.5);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@keyframes myscale {
+    0% {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5, 1.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+}
+
+.spin {
+    animation-name: spin;
+    -webkit-animation-name: spin;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.ani_arrow {
+    animation-name: arrow;
+    -webkit-animation-name: arrow;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes arrow {
+    from {
+        top: 95%;
+    }
+    to {
+        top: 92%;
+        opacity: 0;
+    }
+}
+
+@keyframes arrow {
+    from {
+        top: 95%;
+    }
+    to {
+        top: 92%;
+        opacity: 0;
+    }
+}

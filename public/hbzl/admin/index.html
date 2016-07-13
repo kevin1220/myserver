@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>奖品设置</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-heading"><span id="plus" class="glyphicon glyphicon-plus-sign"></span>
+                <button class="btn btn-default col-md-offset-1" id="rewarder">中奖名单</button>
+                <button class="btn btn-default col-md-offset-1" id="gamers">参与名单</button>
+                <button class="btn btn-default col-md-offset-9" id="reset">重置奖品设置</button>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <form name="form1" action="/rotate/file/uploading" method="post" enctype="multipart/form-data">
+                        <h5 style="color:darkgrey;line-height: 30px;">分别上传480*800对应文件800.jpg，540*960对应文件960.jpg，720*1280对应文件1280.jpg，1080*1920对应文件1920.jpg，640*960对应文件ios4.jpg，640*1136对应文件ios5.jpg，750*1334对应文件ios6.jpg</h5>
+                        <br>
+                        <div class="col-md-2 input-group">
+                            <input type="file" name="bgimg" id="bgimg">
+                            <br>
+                            <button type="submit" class="btn ">上传</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-offset-10">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="count" id="count" placeholder="抽奖次数限制">
+                    </div>
+                    <div class="input-group">
+                        <textarea name="rule" id="rule" cols="30" rows="1" class="form-control" placeholder="活动规则"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3">奖品</div>
+                    <div class="col-md-3">概率</div>
+                    <div class="col-md-3">奖品个数</div>
+                    <div class="col-md-3">操作</div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button type="button" id="submit" class="btn btn-default">提交</button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/tools.js"></script>
+    <script type="text/javascript">
+    $(function() {
+
+        //页面加载完成查询用户配置
+        window.onload = function() {
+            $.ajax({
+                url: '/rotate/getconf',
+                type: 'GET',
+                success: function(data) {
+                    var data = data
+                        // console.log('111:' + data)
+                    for (var i = 0; i < data.length; i++) {
+                        // console.log(data[i])
+                        var reward = "<div class='panel-body rewards'><div class='row'><div class='col-md-3'><input type='text' data-type='reward' class='form-control noempty' placeholder='奖品' value='" + data[i].reward + "'></div><div class='col-md-3'><div class='input-group'><input type='text' data-type='probability' class='form-control noempty' placeholder='概率' aria-describedby='basic-addon2' value='" + data[i].probability + "'><span class='input-group-addon'>%</span></div></div><div class='col-md-3'><input type='text' data-type='number' class='form-control noempty' placeholder='奖品数' value='" + data[i].number + "'></div><div class='col-md-3'><span class='glyphicon glyphicon-minus-sign minus'></span></div></div></div>";
+                        $('.panel-body:last').after(reward);
+                    }
+                    // console.log($('.minus').length)
+                    $('.minus').each(function() {
+                        $(this).on('click', function() {
+                            // alert('minus');
+                            delreward(this);
+                        })
+                    });
+                },
+                error: function(err) {
+                    console.log(err)
+                }
+            });
+        }
+
+
+
+
+        // 最后一个奖品
+        function delreward(ele) {
+            // var Rewards = $('.rewards');
+            // if (Rewards.length <= 1) {
+            //     alert('请输入奖品信息！！！')
+            //     return;
+            // }
+            $(ele).parent().parent().parent().remove();
+        }
+
+        function addreward() {
+            var reward = "<div class='panel-body rewards'><div class='row'><div class='col-md-3'><input type='text' data-type='reward' class='form-control noempty' placeholder='奖品' value=''></div><div class='col-md-3'><div class='input-group'><input type='text' data-type='probability' class='form-control noempty' placeholder='概率' aria-describedby='basic-addon2' value=''><span class='input-group-addon'>%</span></div></div><div class='col-md-3'><input type='text' data-type='number' class='form-control noempty' placeholder='奖品数' value=''></div><div class='col-md-3'><span class='glyphicon glyphicon-minus-sign minus'></span></div></div></div>";
+            $('.panel-body:last').after(reward);
+            $('.minus').each(function() {
+                $(this).on('click', function() {
+                    // alert('minus');
+                    delreward(this);
+                })
+            });
+        }
+
+        function getParams() {
+            var params = [];
+            var rewards = $('.rewards');
+            rewards.each(function() {
+                var param = {
+                    "reward": $(this).find("[data-type='reward']").val(),
+                    "probability": $(this).find("[data-type='probability']").val(),
+                    "number": $(this).find("[data-type='number']").val(),
+                    "count": $('#count').val(),
+                    "rule": $('#rule').val()
+                };
+                params.push(param);
+            });
+            return params;
+        }
+        $('#plus').on('click', function() {
+            addreward();
+        });
+
+        $('#submit').on('click', function() {
+            var config = JSON.stringify(getParams());
+            console.log($('#bgimg'));
+            // var file = $('#bgimg').file[0];
+            $.ajax({
+                url: '/rotate/setconf',
+                type: 'POST',
+                data: 'config=' + config,
+                success: function(data) {
+                    // console.log(data);
+                    alert('提交成功');
+                    location.href='/hbzl/admin';
+                },
+                error: function(err) {
+                    console.log('err:' + JSON.stringify(err));
+                }
+            });
+        });
+        $('#rewarder').on('click', function() {
+            location.href = 'userinfo.html';
+        });
+        $('#gamers').on('click', function() {
+            location.href = 'gamers.html';
+        });
+        $('#reset').on('click', function() {
+            $.ajax({
+                url: '/rotate/reset',
+                type: 'GET',
+                success: function() {
+                    location.href = '/hbzl/admin';
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        })
+
+    })
+    </script>
+</body>
+
+</html>

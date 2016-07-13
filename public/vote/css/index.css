@@ -1,0 +1,114 @@
+/*自定义对话框组件*/
+
+#dialog .dialog {
+    width: 80%;
+    border-radius: .5em;
+    background-color: rgba(0,0,0,.6);
+    text-align: center;
+    top: 30%;
+    left: 50%;
+    margin-left: -40%;
+    position: fixed;
+    color:rgb(255,255,255);
+}
+.dialogText {
+    margin-top: 1em;
+}
+#dialog .dialogbtns {
+    width: 50%;
+    margin-left: 25%;
+    text-align: justify;
+}
+#dialog .dialogbtns>.ok {
+    background-color: #07AAE8;
+    display: inline-block;
+    color: rgb(255,255,255);
+    padding: .3em .8em;
+    border-radius: .3em;
+}
+#dialog .dialogbtns>.cancel {
+    background-color: #07AAE8;
+    display: inline-block;
+    color: rgb(255,255,255);
+    padding: .3em .8em;
+    border-radius: .3em;
+}
+#dialog hr {
+    margin: .6em auto 1.5em auto;
+}
+
+/*自定义对话框组件*/
+body {background: rgba(41, 176, 241, 0.65);}
+.title {
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    color: goldenrod;
+    font-size: 1em;
+}
+.piclist {
+    border: 1px solid darkgrey;
+    width: 28%;
+    height: 31%;
+    margin-left: 3%;
+    margin-right: 1%;
+    text-align: center;
+    display: inline-block;
+    margin-top: 0.5em;
+}
+.votebtn {
+    background: red;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5;
+    border-radius: 1.5em;
+    color: white;
+    position: relative;
+    margin-left: 50%;
+    left: -.75em;
+}
+.pic {
+    height: 60%;
+    width: 100%;
+    font-size: 0;
+}
+
+.pic>img {
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+}
+
+div#app {
+    width: 100%;
+    height: inherit;
+}
+.name {
+    width: 50%;
+    display: inline;
+}
+
+.number {
+    width: 50%;
+    display: inline;
+}
+
+.index {
+    display: inline;
+    width: 1.5em;
+    height: 1.5em;
+    color: dodgerblue;
+    line-height: 1.5;
+}
+.submit {
+    background-color: darkorange;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin-bottom: 5%;
+    border: 0;
+    color:white;
+    width:80%;
+    margin-left:10%;
+    margin-top: 5%;
+}

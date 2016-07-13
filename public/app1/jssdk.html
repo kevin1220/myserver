@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title></title>
+    <!-- debug -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="../javascripts/angular.js"></script>
+    <script src="../javascripts/angular-resource.js"></script>
+    <script src="js/app.js"></script>
+    <!-- debug -->
+</head>
+
+<body ng-app="myApp" ng-controller="myAppCtrl">
+    <div class="form-group">
+        <label for="" class="label-control">电话：</label>
+        <input type="text" class="form-control">
+    </div>
+    <button ng-click="chooseImage();" type="button" class="btn btn-default btn-primary btn-block">
+        <h4>上传照片</h4></button>
+    <button ng-click="startRecord();" type="button" class="btn btn-default btn-primary btn-block">
+        <h4>开始录音</h4></button>
+    <button ng-click="stopRecord();" type="button" class="btn btn-default btn-primary btn-block">
+        <h4>停止录音</h4></button>
+    <button ng-click="playVoice();" type="button" class="btn btn-default btn-primary btn-block">
+        <h4>播放语音</h4></button>
+    <button ng-click="playVoice();" type="button" class="btn btn-default btn-primary btn-block">
+        <h4>暂停播放</h4></button>
+    <button ng-click="stopVoice();" type="button" class="btn btn-default btn-primary btn-block">
+        <h4>停止播放</h4></button>
+    <button type="button" class="btn btn-default btn-primary" ng-click="uploadImage()">提交</button>
+    <script src="../javascripts/zepto.js"></script>
+    <script type="text/javascript" src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
+</body>
+
+</html>

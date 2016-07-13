@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>10万现金红包，租借你的朋友圈</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/tools.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var storage = window.localStorage;
+        var user = storage.getItem("user");
+        var userinfo = JSON.parse(user);
+
+
+
+
+
+        var openid = userinfo.openid;
+        var subscribe = userinfo.subscribe;
+        var shareOpenid = userinfo.shareOpenid;
+        var bymp = userinfo.bymp;
+        if (shareOpenid) {
+
+        }
+        $.ajax({
+            url: '/rotate/getUser?openid=' + shareOpenid,
+            success: function(data) {
+
+                userinfo.bymp = bymp;
+
+                localStorage.setItem("userinfo", JSON.stringify(userinfo));
+                localStorage.setItem("userBinfo", JSON.stringify(data));
+                if (bymp === 'false') {
+                    if (subscribe === 1) {
+                        location.href = 'index2.html';
+                    } else {
+                        location.href = 'index1.html';
+                    }
+                } else {
+                    location.href = 'index1.html';
+                }
+            }
+        })
+
+
+    })
+    </script>
+</body>
+
+</html>

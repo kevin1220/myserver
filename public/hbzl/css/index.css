@@ -1,0 +1,214 @@
+body {
+    font-family: 'SimHei';
+    margin: 0;
+}
+
+img {}
+
+input {
+    border-radius: 0.3em;
+    color: white;
+    line-height: normal;
+    /* for non-ie */
+    line-height: 22px\9;
+    /* for ie */
+}
+
+input::-ms-input-placeholder {
+    text-align: center;
+    font-size: 0.7em;
+}
+
+input::-webkit-input-placeholder {
+    text-align: center;
+    font-size: 0.7em;
+}
+
+#mainbg {
+    width: 100%;
+    position: absolute;
+    z-index: -999;
+}
+
+#header {
+    height: 5.6%;
+    background-color: #8E0718;
+    position: absolute;
+    width: 100%;
+}
+
+#header>ul {
+    line-height: 2;
+    list-style: none;
+}
+
+#header li {
+    width: 33.333%;
+    float: left;
+    height: 10%;
+    color: #BD9B9E;
+    text-align: center;
+}
+
+#main {
+    width: 100%;
+}
+
+#headimg {
+    border-radius: 100%;
+    position: absolute;
+    left: 35.2%;
+    top: 20.4%;
+    width: 30.3%;
+}
+
+#headimgbg {
+    position: absolute;
+    width: 33.3%;
+    left: 33.3%;
+    top: 19.5%;
+    z-index: -888;
+}
+
+#wxname {
+    color: #F3BD63;
+    font-size: 1em;
+    font-family: '方正正中黑';
+    position: absolute;
+    top: 42%;
+    left: 45%;
+}
+
+#diyform {
+    position: absolute;
+    color: #F3BD63;
+    width: 100%;
+    text-align: center;
+    top: 56%;
+    font-size: 1.2em
+}
+
+#diyform input {
+    opacity: 0.8;
+    background-color: #f00;
+}
+
+#diyform>label {
+    margin-right: 1em;
+}
+
+#diyform img {
+    width: 16%;
+    width: 7em;
+}
+
+#myCanvas {
+    position: absolute;
+    margin: auto;
+    left: 15%;
+    bottom: 3%;
+}
+
+#redPackage {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.package {
+    margin:0;
+    padding:0;
+    border: 0;
+    position: absolute;
+     animation: rgfly1 10s;
+    -webkit-animation: rgfly1 10s;
+}
+.package>h6{
+    width:60px;
+    white-space: pre-wrap;
+    color:white;
+    font-size: 0.1em;
+}
+
+.package:nth-child(1) {
+    animation: rgfly1 10s;
+    -webkit-animation: rgfly1 10s;
+    left:5%;
+}
+
+.package:nth-child(2) {
+    animation: rgfly2 10s;
+    -webkit-animation: rgfly2 10s;
+    left:35%;
+}
+
+.package:nth-child(3) {
+    animation: rgfly3 10s;
+    -webkit-animation: rgfly3 10s;
+    left:60%;
+}
+
+@keyframes rgfly1 {
+    0% {
+        top: 25px;
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+    
+    50% {
+        top: 90px;
+        transform: rotate(-10deg);
+        transform: -webkit-rotate(-10deg);
+    }
+    100% {
+        top: 100px;
+        transform: rotate(20deg);
+        -webkit-transform: rotate(20deg);
+    }
+}
+
+@keyframes rgfly2 {
+    0% {
+        top: 200px;
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+    25% {
+        top: 225px;
+        transform: rotate(20deg);
+        -webkit-transform: rotate(20deg);
+    }
+    50% {
+        top: 225px;
+        transform: rotate(-20deg);
+        -webkit-transform: rotate(-20deg);
+    }
+    100% {
+        top: 235px;
+        transform: rotate(10deg);
+        -webkit-transform: rotate(10deg);
+    }
+}
+
+@keyframes rgfly3 {
+    0% {
+        top: 100px;
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+    25% {
+        top: 110px;
+        transform: rotate(30deg);
+        -webkit-transform: rotate(30deg);
+    }
+    50% {
+        top: 110px;
+        transform: rotate(-20deg);
+        -webkit-transform: rotate(-20deg);
+    }
+    100% {
+        top: 115px;
+        transform: rotate(20deg);
+        -webkit-transform: rotate(20deg);
+    }
+}

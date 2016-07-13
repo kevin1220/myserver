@@ -1,0 +1,653 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+}
+
+
+/*loading*/
+
+.loading {
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 50%;
+    text-align: center
+}
+
+.progress {
+    text-align: center;
+}
+
+
+/*1*/
+
+.bg1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -999;
+}
+
+.txt1 {
+    margin-left: 10%;
+    margin-top: 10%;
+    width: 80%;
+    animation-fill-mode: none;
+    -webkit-animation-fill-mode: none;
+    animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease-out;
+}
+
+.ren1 {
+    width: 30%;
+    margin-top: -50%;
+    margin-left: 51%;
+}
+
+.ling1 {
+    margin-top: -47%;
+    margin-left: 10%;
+    width: 89%;
+}
+
+.duilian1 {
+    width: 26%;
+    margin-left: 67%;
+    margin-top: -142%;
+}
+
+.duilianleft1 {
+    width: 28%;
+    float: left;
+    display: inline-block;
+}
+
+.duilianmiddle1 {
+    width: 44%;
+    float: left;
+    display: inline-block;
+}
+
+.duilianright1 {
+    width: 28%;
+    display: inline-block;
+}
+
+
+/*2*/
+
+.bg2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -999;
+}
+
+.txt2 {
+    margin-left: 7%;
+    margin-top: 10%;
+    width: 80%;
+    animation-fill-mode: none;
+    -webkit-animation-fill-mode: none;
+    animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease-out;
+}
+
+.ren2 {
+    width: 30%;
+    margin-top: -50%;
+    margin-left: 30%;
+}
+
+.ling2 {
+    margin-top: -67%;
+    margin-left: 68%;
+    width: 15%;
+}
+
+.duilian2 {
+    width: 32%;
+    margin-left: 63%;
+    margin-top: -89%;
+}
+
+.duilianleft2 {
+    width: 25%;
+    display: inline-block;
+    float: left;
+}
+
+.duilianright2 {
+    width: 25%;
+    display: inline-block;
+    float: left;
+}
+
+
+/*3*/
+
+.bg3 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -999;
+}
+
+.txt3 {
+    margin-left: 10%;
+    margin-top: 10%;
+    width: 80%;
+    animation-fill-mode: none;
+    -webkit-animation-fill-mode: none;
+    animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease-out;
+}
+
+.shua3 {
+    width: 100%;
+    position: absolute;
+    z-index: -444;
+}
+
+.duilian3 {
+    width: 18%;
+    margin-left: 40%;
+    margin-top: 10%;
+}
+
+.duilianleft3 {
+    width: 50%;
+    float: left;
+    display: inline-block;
+}
+
+.duilianright3 {
+    width: 50%;
+    display: inline-block;
+}
+
+
+/*4*/
+
+.bg4 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -999;
+}
+
+.txt4 {
+    margin-left: 10%;
+    margin-top: 10%;
+    width: 80%;
+    animation-fill-mode: none;
+    -webkit-animation-fill-mode: none;
+    animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease-out;
+}
+
+.ren4 {
+    width: 30%;
+    margin-top: -40%;
+    margin-left: 21%;
+}
+
+.ling4 {
+    margin-top: -98%;
+    margin-left: 58%;
+    width: 15%;
+}
+
+.duilian4 {
+    width: 15%;
+    margin-left: 77%;
+    margin-top: -87%;
+}
+
+.duilianleft4 {
+    width: 46%;
+    float: left;
+}
+
+.duilianright4 {
+    margin: 47%;
+    width: 46%;
+}
+
+
+/*5*/
+
+.bg5 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -999;
+}
+
+.shua {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -888;
+}
+
+.shua>img {
+    min-height: 63%;
+    max-height: 63%;
+    height: 63%;
+}
+
+.txt5_1 {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 0.3em;
+}
+
+.txt5_2 {
+    width: 46%;
+    margin-left: 27%;
+    margin-top: 0.7em;
+}
+
+.txt5_3 {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 1.2em;
+    opacity: 0;
+}
+
+.txt5_4 {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: -1.1em;
+}
+
+.txt5_5 {
+    margin-top: 30%;
+    width: 84%;
+    margin-left: 8%;
+}
+
+
+/*.txt5_6 {
+    width: 84%;
+    margin-left: 8%;
+    margin-top: 1em;
+}*/
+
+
+/*6*/
+
+.bg6 {
+    position: absolute;
+    z-index: -999;
+    left: 0;
+    top: 0;
+}
+
+.biao {
+    width: 35%;
+    margin-left: 65%;
+    margin-top: 4%;
+}
+
+.lingpai {
+    position: absolute;
+    top: 5%;
+    z-index: -888;
+    width: 90%;
+    left: 5%;
+}
+
+.username {
+    margin-left: 29%;
+    margin-top: 36%;
+    margin-bottom: -38%;
+}
+
+.tel {
+    margin-left: 29%;
+    margin-top: 60%;
+    margin-bottom: -66%;
+}
+
+.companyName {
+    margin-left: 29%;
+    margin-top: 48%;
+    margin-bottom: -49%;
+}
+
+@media screen and (min-height:580px) {
+    .username {
+        margin-left: 29%;
+        margin-top: 36%;
+        margin-bottom: -38%;
+    }
+    
+    .companyName {
+        margin-left: 29%;
+        margin-top: 50%;
+        margin-bottom: -49%;
+    }
+    .tel {
+        margin-left: 29%;
+        margin-top: 60%;
+        margin-bottom: -66%;
+    }
+}
+
+input {
+    border: 0px;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    background-color: transparent;
+    padding-left: 0.7em;
+}
+
+input::-webkit-input-placeholder {
+    font-size: 1.1em;
+}
+
+input::input-placeholder {
+    font-size: 1.1em;
+}
+
+.submit {
+    width: 56%;
+    margin-left: 19%;
+    margin-top: 79%;
+}
+
+.huohua1 {
+    width: 34%;
+    margin-top: -45%;
+    margin-left: 62%;
+    opacity: 0.6;
+    display: none;
+}
+
+.huohua2 {
+    width: 60%;
+    margin-top: -10%;
+    margin-left: 1%;
+    opacity: 0.6;
+}
+
+
+/*7*/
+
+.bg7 {
+    position: absolute;
+    z-index: -999;
+    left: 0;
+    top: 0;
+}
+
+.logo7 {
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 1%;
+    margin-bottom: -8%;
+}
+
+.biao2 {
+    width: 31%;
+    margin-left: 64%;
+    margin-top: 6%;
+}
+
+.tiepai {
+    width: 40%;
+    margin-left: 30%;
+    margin-top: -8%;
+}
+
+.light {
+    position: absolute;
+    top: -7%;
+    z-index: -666;
+}
+
+.zhizhang {
+    position: absolute;
+    z-index: -888;
+    width: 90%;
+    left: 5%;
+    top: 10%;
+}
+
+.txt7_1 {
+    width: 70%;
+    margin-left: 15%;
+    margin-top: -1%;
+}
+
+.txt7_2 {
+    width: 74%;
+    margin-left: 13%;
+    margin-top: 0.3em;
+}
+
+.share_btn {
+    width: 46%;
+    margin-top: -2%;
+    margin-left: 27%;
+}
+
+.huohua7_1 {
+    opacity: 0.6;
+}
+
+.float {
+    display: none;
+}
+
+.float_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.float_arrow {
+    position: absolute;
+    z-index: 11;
+    top: 3%;
+    left: 53%;
+    width: 37%;
+}
+
+.dialog {
+    width: 80%;
+    position: absolute;
+    z-index: 111;
+    left: 5%;
+    top: 20%;
+    border-radius: 1em;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    color: rgba(255, 255, 255, 1);
+    display: none;
+}
+
+.dialog .ok {
+    margin-top: 1em;
+    color: rgba(255, 0, 0, 1);
+}
+
+.arrow {
+    position: absolute;
+    width: 10%;
+    top: 87%;
+    left: 45%;
+    z-index: 2000;
+    opacity: 0.3;
+}
+
+
+/*自定义动画*/
+
+.spread {
+    animation-name: spread;
+    -webkit-animation-name: spread;
+}
+
+@-webkit-keyframes spread {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 0;
+    }
+}
+
+@keyframes spread {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 0;
+    }
+}
+
+.myscale {
+    animation-name: myscale;
+    -webkit-animation-name: myscale;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@-webkit-keyframes myscale {
+    0% {
+        -webkit-transform: scale(1, 1);
+        opacity: 1;
+    }
+    50% {
+        -webkit-transform: scale(1.5, 1.5);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@keyframes myscale {
+    0% {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5, 1.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+}
+
+.spin {
+    animation-name: spin;
+    -webkit-animation-name: spin;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.ani_arrow {
+    animation-name: arrow;
+    -webkit-animation-name: arrow;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes arrow {
+    from {
+        top: 95%;
+    }
+    to {
+        top: 92%;
+        opacity: 0;
+    }
+}
+
+@keyframes arrow {
+    from {
+        top: 95%;
+    }
+    to {
+        top: 92%;
+        opacity: 0;
+    }
+}

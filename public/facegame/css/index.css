@@ -1,0 +1,237 @@
+.page{
+    width:inherit;
+    height:inherit;
+}
+.floatdiv {
+    text-align: center;
+    background-color: rgba(200,200,200,0.8);
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+}
+.floatdiv2 {
+    text-align: center;
+    background-color: rgba(200,200,200,0.8);
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    display: none;
+}
+img.retest {
+    width: 100%;
+    margin-top: 103%;
+}
+
+img.toh5 {
+    margin-top: 3%;
+    width: 100%;
+}
+.floatdiv>span {
+    top: 60%;
+    position: relative;
+    color: #0c9ed4;
+    font-size: 20px;
+}
+
+.floatdiv>img {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    top: 50%;
+    margin-top: -32px;
+    left: 50%;
+    margin-left: -32px;
+}
+/*page_0*/
+.page_0{
+    overflow: hidden;
+    background-image: url(../img/2P/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    /*display: none;*/
+}
+
+.page0_pannel{
+    background:url(../img/2P/pannel.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    margin-top: -15%;
+}
+.page0_pannel_text2>input {
+    width: 43%;
+    border: 0;
+    background-color: transparent;
+    height: 16px;
+}
+img.page0_mans {
+    width: 100%;
+}
+
+img.page0_text {
+    width: 100%;
+    margin-top: -7%;
+}
+
+img.page0_pannel_text1 {
+    width: 100%;
+    margin-top: 18%;
+}
+
+.page0_pannel_text2 {
+    height: 16px;
+    margin-top: 5%;
+    background-image: url(../img/2P/pannel_text2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-left: 50%;
+    padding-bottom: 2%;
+    width: 25%;
+}
+img.page0_test_btn {
+    width: 100%;
+    margin-top: 9%;
+    margin-bottom: 8%;
+}
+/*page_1*/
+.page_1{
+    overflow: hidden;
+    background-image: url(../img/3P/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: none;
+}
+.page1_pannel{
+    background:url(../img/3P/pannel.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: center;
+    margin-top: 2%;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    animation-delay: 0.3s;
+    -webkit-animation-delay:0.3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+img.page1_text {
+    width: 100%;
+    margin-top:2%;
+}
+
+img.page1_man {
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    bottom: 0;
+}
+
+img.page1_pannel_text {
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 16%;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    animation-delay: 0.8s;
+    -webkit-animation-delay:0.8s;
+}
+
+
+/*page_2*/
+.page_2{
+    overflow: hidden;
+    background-image: url(../img/3P/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: none; 
+}
+.page2_pannel{
+    background:url(../img/4P/pannel.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: center;
+    margin-top: 2%;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    animation-delay: 0.3s;
+    -webkit-animation-delay:0.3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+img.page2_text {
+    width: 100%;
+    margin-top:2%;
+}
+
+img.page2_man {
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    bottom: 0;
+}
+
+img.page2_pannel_text {
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 16%;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    animation-delay: 0.8s;
+    -webkit-animation-delay:0.8s;
+}
+/*page_3*/
+.page_3{
+    overflow: hidden;
+    background-image: url(../img/3P/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: none; 
+}
+.page3_pannel{
+    background:url(../img/5P/pannel.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: center;
+    margin-top: 2%;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    animation-delay: 0.3s;
+    -webkit-animation-delay:0.3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+
+}
+img.page3_text {
+    width: 100%;
+    margin-top:2%;
+}
+
+img.page3_man {
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    bottom: 0;
+}
+
+img.page3_pannel_text {
+    width: 100%;
+    margin-top: 14%;
+    margin-bottom: 20%;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    animation-delay: 0.8s;
+    -webkit-animation-delay:0.8s;
+}

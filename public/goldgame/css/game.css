@@ -1,0 +1,183 @@
+@font-face {
+  font-family:"方正粗雅宋_my";
+  src:url('../font/方正粗雅宋_GBK.TTF') format('TureType');
+}
+.p1, .p2, .p3{
+	overflow: hidden;
+}
+/*p1*/
+.p1{
+	background-image: url(../images/p1/bg.jpg);
+	background-size: cover;
+	width: inherit;
+	height: inherit;
+	background-repeat: no-repeat;
+}
+img.p1_logo {
+    width: 100%;
+    margin-top: 7%;
+}
+
+img.p1_gold {
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 7%;
+}
+
+img.p1_startgame {
+    width: 40%;
+    margin-top: 7%;
+    margin-left: 30%;
+}
+
+
+/*p2*/
+.p2{
+	position: relative;
+	width: inherit;
+	height:inherit;
+	text-align: justify;
+	background-image: url(../images/p2/bg.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.holes {
+    width: inherit;
+    position: absolute;
+    bottom: 0;
+    height: 42%;
+}
+.hole {
+    height: 30%;
+    width: 30%;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.pristine{
+	background-image:url(../images/p2/holes.png);
+}
+.showgold{
+	background-position: 0 12px;
+		-webkit-animation: showgold .3s linear 0s 1 normal both;
+	-o-animation: showgold .3s linear 0s 1 normal both;
+	animation: showgold .3s linear 0s 1 normal both;
+}
+.death{
+	background-image:url(../images/p2/death.png);
+}
+span.score {
+		color:orange;
+		font-family: "微软雅黑";
+    position: absolute;
+    top: 0;
+    font-size: 32px;
+    right: 0;
+    padding: .5em;
+}
+
+span.time {
+		color:#d6530f;
+		font-family: "微软雅黑";
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 32px;
+    padding: .5em;
+}
+
+.p3{
+	width: inherit;
+	height: inherit;
+	background-image: url(../images/p3/bg.jpg);
+	background-size: cover;
+	position: relative;
+	background-repeat: no-repeat;
+	display: none;
+}
+img.p3_gold {
+    position: absolute;
+    width: 10%;
+    top: 2%;
+    right: 23%;
+    -webkit-animation: goldSpin 1s linear 0s infinite normal both;
+    -o-animation: goldSpin 1s linear 0s infinite normal both;
+    animation: goldSpin 1s linear 0s infinite normal both;
+}
+img.replay {
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 81%;
+    position: relative;
+}
+
+.p3_score {
+    margin-top: 14%;
+    padding: 3em 0em;
+    font-size: 32px;
+    text-align: center;
+    color: #FF7000;
+    text-shadow: 2px 3px 16px black;
+    line-height: 2;
+    position: absolute;
+    width: 30%;
+    left: 35%;
+    -webkit-animation: scaleScore .5s linear 0s 1 normal both;
+    -o-animation: scaleScore .5s linear 0s 1 normal both;
+    animation: scaleScore .5s linear 0s 1 normal both;
+}
+
+@keyframes scaleScore{
+	to{
+		transform: scale(3);
+		-webkit-transform:scale(3);
+	}
+}
+@-webkit-keyframes scaleScore{
+	to{
+		transform: scale(3);
+		-webkit-transform:scale(3);
+	}
+}
+@keyframes goldSpin{
+	0%{
+		-webkit-transform:rotate3d(0,0,0,0);
+		transform:rotate3d(0,0,0,0);
+	}
+	50%{
+		-webkit-transform:rotate3d(0,1,0,180deg); 
+		transform:rotate3d(0,1,0,180deg); 
+	}
+	100%{
+		-webkit-transform:rotate3d(0,1,0,360deg); 
+		transform:rotate3d(0,1,0,360deg); 
+	}
+}
+@-webkit-keyframes goldSpin{
+	0%{
+		-webkit-transform:rotate3d(0,0,0,0);
+		transform:rotate3d(0,0,0,0);
+	}
+	50%{
+		-webkit-transform:rotate3d(0,1,0,180deg); 
+		transform:rotate3d(0,1,0,180deg); 
+	}
+	100%{
+		-webkit-transform:rotate3d(0,1,0,360deg); 
+		transform:rotate3d(0,1,0,360deg); 
+	}
+}
+
+//黄金冒出来的动画
+@keyframes showgold{
+	to{
+		background-image:url(../images/p2/showgold.png);
+		background-position: 0 0;
+	}
+}
+@-webkit-keyframes showgold{
+	to{
+		background-image:url(../images/p2/showgold.png);
+		background-position: 0 0;
+	}	
+}

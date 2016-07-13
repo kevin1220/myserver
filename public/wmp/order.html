@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title></title>
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telphone=no, email=no">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/order.css">
+    <script type="text/javascript" src="js/order.js"></script>
+</head>
+
+<body>
+    <p>请在下面选择一种下单的类型：</p>
+    <input type="radio" id="tel" name="ordertype" value="电话联系">
+    <span>电话联系</span>
+    <div class="ordertype">
+        <div class="ordernav" id="oradernav_tel">
+            <span>点击电话号码，联系我们的工作人员</span><span>18665027060</span>
+        </div>
+    </div>
+    <br>
+    <!-- <input type="radio" name="ordertype" value="QQ联系">QQ联系<br>
+    <span>点击QQ号码，联系我们的工作人员</span><a href="javascript:qqcao(1121898880);">1079936039</a><br> -->
+    <input type="radio" id="diy" name="ordertype" value="自主下单">
+    <span>自主下单</span>
+    <div class="ordertype">
+        <form class="ordernav" id="oradernav_diy" action="order_submit" method="post" accept-charset="utf-8">
+            <p>您可以提交一下信息，我们的工作人员会主动联系您</p>
+            <label>称&#x3000;&#x3000;呼：
+                <input type="text" name="" value="">
+            </label>
+            <br>
+            <label>联系方式：
+                <input type="tel" name="" value="">
+            </label>
+        </form>
+    </div>
+</body>
+
+</html>

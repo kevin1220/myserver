@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>活动人员电话列表</title>
+    <style type="text/css" media="screen">
+    .tellist {
+        width: 100%;
+        list-style: none;
+        line-height: 1em;
+    }
+    
+    .tellist div {
+        width: 19%;
+        float: left;
+        line-height: 1.5em;
+        border: 1px solid darkgrey;
+        padding-left: 1em;
+    }
+    </style>
+</head>
+
+<body>
+    <p><strong>参与活动人员电话信息：(总人数为：<span id="count"></span>)</strong></p>
+    <div class="tellist"></div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $.ajax({
+            url: '/zmkxj/getUsers',
+            type: 'GET',
+            success: function(data) {
+                console.log(data.length);
+                $('#count').text(data.length)
+                for (var i = 0; i < data.length; i++) {
+                    var div1 = "<div>电话号码：" + data[i].tel + "</div>";
+                    $('.tellist').append(div1);
+
+                }
+
+            }
+        });
+    });
+    </script>
+</body>
+
+</html>

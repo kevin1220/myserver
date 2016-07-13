@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>挖金游戏</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+
+<body>
+    <div class="container">
+        <div class="holes">1</div>
+        <div class="holes">2</div>
+        <div class="holes">3</div>
+        <div class="holes">4</div>
+        <div class="holes">5</div>
+        <div class="holes">6</div>
+        <div class="holes">7</div>
+        <div class="holes">8</div>
+        <div class="holes">9</div>
+        <div class="holes">10</div>
+        <div class="holes">11</div>
+        <div class="holes">12</div>
+        <div class="holes">13</div>
+        <div class="holes">14</div>
+        <div class="holes">15</div>
+        <div class="holes">16</div>
+        <div class="holes">17</div>
+        <div class="holes">18</div>
+        <div class="holes">19</div>
+        <div class="holes">20</div>
+        <i style="width: 100%;height: 0; display: inline-block;"></i>
+    </div>
+    <br>
+    <br>
+    <br>
+    <span class="score">0</span>
+    <br>
+    <br>
+    <br>
+    <span class="time">60s</span>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="js/zepto.min.js"></script>
+    <script type="text/javascript" src="js/tools.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var game = new Game(null, $('.holes'));
+        var time = 30;
+        game.start();
+        var timmer = setInterval(function() {
+            time--;
+            $('.time').text(time+'s');
+            if (time === 0) {
+            	game.stop();
+                clearInterval(timmer);
+                showend();
+            }
+        }, 1000);
+
+        function showend() {
+            //游戏结束时弹出的框
+            alert('游戏结束');
+        }
+    })
+    </script>
+</body>
+
+</html>

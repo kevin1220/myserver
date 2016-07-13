@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>获奖名单</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <table class="table" id="userinfos">
+            <tr>
+                <th>姓名</th>
+                <th>电话</th>
+                <th>奖品</th>
+                <th>获奖时间</th>
+            </tr>
+        </table>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        //获取中奖名单
+        $.ajax({
+            url: '/rotate/find',
+            type: 'GET',
+            success: function(data) {
+                console.log(data)
+                if (data.length < 1) {
+                    $('#userinfos').text('没有中奖的人');
+                    return;
+                }
+                for (i in data) {
+                    var userinfo = $("<tr><td>" + data[i].username + "</td><td>" + data[i].phonenumber + "</td><td>" + data[i].reward + "</td><td>" + data[i].createtime + "</td></tr>");
+                    $('#userinfos').append(userinfo);
+                }
+            },
+            error: function(err) {
+                console.log(err)
+            }
+        });
+    });
+    </script>
+</body>
+
+</html>

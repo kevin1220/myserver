@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+
+<body>
+    <header id="header" class="">
+        <header id="header" class="">
+            <ul>
+                <li><a href="rules.html" title="">活动规则</a></li>
+                <li><a href="http://mp.weixin.qq.com/s?__biz=MzI3ODExMzc0NA==&mid=402130375&idx=1&sn=e21508b4ac0978705378dca749e2ab68&scene=1&srcid=0128fhnHIkbeeV2FkCscjbXK#rd
+" title="" >楼盘详情</a></li>
+                <li>我的奖品</li>
+            </ul>
+        </header>
+    </header>
+    <div id="main">
+        <img id="mainbg" src="images/login.jpg" alt="">
+        <div id="wxinfo">
+            <div id="headimgbg">
+                <img src="images/headimgbg.png" alt="">
+            </div>
+            <div id="headimg">
+                <img src="" alt="">
+            </div>
+            <div id="nickname">
+            </div>
+            <div id="diyform">
+                <label>姓名</label>
+                <input id="username" type="text" name="name" value="" placeholder="为了便于领奖，请输入真实姓名">
+                <br>
+                <br>
+                <label>电话</label>
+                <input id="tel" type="tel" name="tel" value="" placeholder="在这里输入有效电话哦">
+                <div id="submit1"><img id="submit1" src="images/submit.png" alt=""></div>
+            </div>
+        </div>
+    </div>
+    <!-- 自定义弹出框 -->
+    <div class="contentBox" id="contentBox2">
+        <h6>领取成功</h6>
+        <button class="ok">OK</button>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/tools.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        //获取loading页面传过来的用户信息
+        getmpinfo();
+
+
+        function getmpinfo() {
+            var subscribe = getQueryString('subscribe');
+            var openid = getQueryString('openid');
+            var nickname = getQueryString('nickname');
+            console.log("是娇娇的昵称吗："+nickname)
+            var headimgurl = getQueryString('headimgurl');
+            var bymp = getQueryString('bymp');
+            var shareOpenid = getQueryString('shareOpenid');
+
+            setinfo(headimgurl, nickname, openid, subscribe, bymp, shareOpenid);
+        }
+
+        function setinfo(headimgurl, nickname, openid, subscribe, bymp, shareOpenid) {
+            $('#headimg>img').attr('src', headimgurl);
+            $('#nickname').text(nickname);
+            $('#submit1>img').on('click', function() {
+                submit1(headimgurl, nickname, openid, subscribe, bymp, shareOpenid);
+            })
+        }
+
+        function showcontentBox(txt) {
+            $('#contentBox2 h6').text(txt);
+            $('#contentBox2').css('display', 'block');
+            $('#contentBox2 .ok').on('click', function() {
+                $('#contentBox2').hide();
+            })
+        }
+
+        //提交用户信息
+
+        function submit1(headimgurl, nickname, openid, subscribe, bymp, shareOpenid) {
+
+            var inputname = $('#username').val();
+            var inputtel = $('#tel').val();
+
+
+            valid(function() {
+
+                $.ajax({
+                    url: '/rotate/regUser?inputname=' + inputname + '&inputtel=' + inputtel + '&subscribe=' + subscribe + '&openid=' + openid + '&nickname=' + nickname + '&headimgurl=' + headimgurl,
+                    type: 'GET',
+                    success: function(data) {
+                        if (bymp === "false") {
+                            location.href = 'index2.html?inputname=' + inputname + '&inputtel=' + inputtel + '&subscribe=' + subscribe + '&openid=' + openid + '&nickname=' + nickname + '&headimgurl=' + headimgurl + '&bymp=' + bymp + '&shareOpenid=' + shareOpenid;
+                            return;
+                        }
+                        location.href = 'index1.html?inputname=' + inputname + '&inputtel=' + inputtel + '&subscribe=' + subscribe + '&openid=' + openid + '&nickname=' + nickname + '&headimgurl=' + headimgurl + '&bymp=' + bymp + '&shareOpenid=' + shareOpenid;
+                    },
+                    error: function() {
+
+                    }
+                });
+
+            });
+
+        }
+        //输入框的校验
+        function valid(_callback) {
+            //姓名校验
+            var name = $('#username').val();
+            var tel = $('#tel').val();
+            if (name === '') {
+                showcontentBox('请输入姓名');
+                return;
+            }
+            if (tel === '') {
+                showcontentBox('请输入电话号码');
+                return;
+            }
+            execCallBack(_callback);
+        }
+
+    })
+    </script>
+
+</html>

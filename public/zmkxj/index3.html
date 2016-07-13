@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>领取大礼包</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/style.css">
+    <style type="text/css" media="screen">
+    .contextbox {
+        background-color: #fff;
+        width: 80%;
+        margin-left: 10%;
+        position: absolute;
+        z-index: 10;
+        background-color: rgba(255, 0, 0, 0.65);
+        text-align: center;
+        top: 50%;
+        color: white;
+        border-radius: 0.7em;
+        font-size: 1em;
+        line-height: 1em;
+        display: none;
+        padding-top: 0.3em;
+        padding-bottom: 1em;
+    }
+    
+    .contextbox>p {
+        line-height: 3em;
+    }
+    
+    .contextbox>button {
+        padding: 0.5em 1.5em;
+    }
+    </style>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src='js/tools.js'></script>
+    <script type="text/javascript">
+    $(function() {
+        jssdk();
+        var tel;
+        $('.submit2').on('click', function() {
+            tel = $('.tel>input').val();
+            if (!isempty()) {
+                showcontext('请输入电话信息！！！');
+                return;
+            }
+            $.ajax({
+                url: '/zmkxj/submit',
+                type: 'POST',
+                data: {
+                    tel: tel
+                },
+                success: function() {
+                    //显示浮层页
+                    $('.float2').css('display','block');
+                    window.setTimeout(function() {
+                        location.href = 'http://gsactivity.diditaxi.com.cn/gulfstream/activity/v2/giftpackage/index?g_channel=0ee071dff9e73c7039b5d9f7691a45e3';
+                    }, 2000)
+                }
+            });
+
+        });
+
+        function showcontext(txt) {
+            $('.contextbox>p').text(txt);
+            $('.contextbox>button').on('click', function() {
+                $('.contextbox').css('display', 'none');
+            });
+            $('.contextbox').css('display', 'block');
+        }
+
+        function isempty() {
+            if (tel == '') {
+                return false;
+            }
+            return true;
+        }
+    })
+    </script>
+</head>
+
+<body>
+    <div class="bg2"><img src="images/6.jpg" alt="">
+        <div class="submit2"><img src="images/6a.png" alt=""></div>
+        <div class="tel">
+            <input type="tel" name="" value="" placeholder="输入有效电话，领取活动礼包">
+        </div>
+    </div>
+    <div class="contextbox">
+        <p></p>
+        <button type="button">OK</button>
+    </div>
+    <div class="float2"><img src="images/9.jpg" alt=""></div>
+</body>
+
+</html>

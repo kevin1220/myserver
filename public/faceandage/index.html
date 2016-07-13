@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- <link rel="stylesheet" href="/static/images/style.css"> -->
+    <style type="text/css">
+    .uploadbtn {
+        text-align: center;
+        background-color: blue;
+        color: white;
+        padding-left: 2em;
+        padding-right: 2em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+    
+    .submit {
+        text-align: center;
+        background-color: blue;
+        color: white;
+        padding-left: 2em;
+        padding-right: 2em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        margin-top: 1em;
+    }
+    
+    .showimg {
+        width: 50%;
+    }
+    
+    img {
+        max-width: 100%;
+        min-width: 100%;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="showimg"><img src="" alt=""></div>
+    <span class="age"></span>
+    <form action="index_submit" method="get" accept-charset="utf-8">
+        <label>
+            <input type="file" id="imgfile" name="file" value="">
+        </label>
+    </form>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/tools.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var showimg;
+        $('#imgfile').on('change', function() {
+            var file = this.files[0];
+            showimg = $('.showimg>img');
+            viewFile(file);
+        })
+
+        function viewFile(file) {
+        	var file = file;
+            var reader = new FileReader();
+            console.log(reader.readAsBinaryString(file).result)
+            reader.onload = function(evt) {
+                showimg.attr('src', evt.target.result);
+            }
+            reader.readAsDataURL(file);
+        }
+    })
+    </script>
+</body>
+
+</html>

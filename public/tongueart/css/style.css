@@ -1,0 +1,54 @@
+html,body{
+	height:100%;
+	width:100%;
+	overflow:hidden;
+	margin:0;
+	padding:0;
+
+}
+/*自定义的弹出框*/
+.dialog {
+    width: 80%;
+    position: absolute;
+    z-index: 111;
+    left: 5%;
+    top: 20%;
+    border-radius: 1em;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    color: rgba(255, 255, 255, 1);
+    display: none;
+}
+
+
+.dialog .ok {
+    margin-top: 1em;
+    color: rgba(255, 0, 0, 1);
+}
+/*分享用得浮层*/
+
+.float {
+    position: absolute;
+    background: rgba(0,0,0,.6);
+    right: 0;
+    top: 0;
+    border-radius: 1em;
+    width: inherit;
+    height: inherit;
+    display: none;
+    z-index: 2;
+}
+.float_bg {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.float_bg img {
+    max-width: 100%;
+    min-width: 100%;
+}

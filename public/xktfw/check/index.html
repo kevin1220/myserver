@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title></title>
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telphone=no, email=no">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="bg"><img src="../images/bg.jpg" alt=""></div>
+    <div class="form_group2">
+        <div class="form_title2">
+            <h5>输入验证码进行验证</h5>
+        </div>
+        <div class="form_field">
+            <div class="verifyCode_input2">
+                <input type="text" name="" value="" placeholder="验证码" maxlength="4">
+            </div>
+            <div class="submit2">
+                <img src="../images/submit.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="dialog">
+        <div class="dialogMsg"></div>
+        <hr>
+        <div class="ok">好</div>
+    </div>
+    <script type="text/javascript" src="../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../js/tools.js"></script>
+    <script type="text/javascript" src="../js/validator.js"></script>
+    <script type="text/javascript">
+    $(function() {
+
+        // 校验电话号码
+        $('.submit2>img').on('click', function() {
+            var verifyCode = $('.verifyCode_input2>input').val();
+            if (!isverifyCode(verifyCode)) {
+                showDialog("请输入合法验证码");
+                return;
+            }
+            $.ajax({
+                url: '/hrth/check',
+                type: 'POST',
+                data: {
+                    verifyCode: verifyCode
+                },
+                success: function() {
+                    showDialog("校验成功", function() {
+                        history.go(0);
+                    });
+                },
+                error: function() {
+                    showDialog("验证码已过期", function() {
+                        history.go(0);
+                    });
+                }
+            });
+        });
+        //弹出框
+        function showDialog(msg, _callback) {
+            $('.dialog .dialogMsg').text(msg);
+            $('.dialog').css("display", "block");
+            $('.dialog .ok').on('click', function() {
+                $('.dialog').css("display", "none");
+                execCallBack(_callback);
+            });
+        }
+
+    })
+    </script>
+</body>
+
+</html>

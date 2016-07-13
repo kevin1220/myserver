@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>10万现金红包，租借你的朋友圈</title>
+    <link rel="stylesheet" href="css/index1.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="js/tools.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+    <header id="header" class="">
+        <ul>
+            <li><a href="rules.html" title="">活动规则</a></li>
+            <li><a href="loupan.html" title="" target="_blank">楼盘详情</a></li>
+            <li><a href="reward.html" title="">我的奖品</a></li>
+        </ul>
+    </header>
+    <div id="main">
+        <img id="mainbg" src="images/index1bg.jpg" alt="">
+        <div id="wxinfo">
+            <div id="headimgbg">
+                <img src="images/headimgbg.png" alt="">
+            </div>
+            <div id="headimg">
+                <img src="" alt="">
+            </div>
+            <div id="nickname">
+            </div>
+            <div id="submit1"><img src="images/joinnow.png" alt=""></div>
+            <div class="instruction">邀小伙伴一起蹭红包</div>
+        </div>
+    </div>
+    <div id="foot">
+        <div id="rewarders">
+            <ul>
+            </ul>
+        </div>
+    </div>
+    <div id="floatdiv">
+        <img src="images/share.png" alt="">
+    </div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+$(function() {
+    //获取loading页面传过来的用户信息
+
+    var userinfo = localStorage.getItem('userinfo');
+    userinfo = JSON.parse(userinfo);
+    console.log("index1中localStorage中的userinfo:" + JSON.stringify(userinfo));
+    var openid = userinfo.openid;
+    var bymp = userinfo.bymp;
+    var shareOpenid = userinfo.shareOpenid;
+    var subscribe = userinfo.subscribe;
+    var nickname = userinfo.nickname;
+    var headimgurl = userinfo.headimgurl;
+    jssdk(openid);
+    setinfo(headimgurl, nickname, openid, subscribe, bymp, shareOpenid);
+
+
+    function setinfo(headimgurl, nickname, openid, subscribe, bymp, shareOpenid) {
+        $('#headimg>img').attr('src', headimgurl);
+        $('#nickname').text(nickname);
+        //没关注
+        console.log(subscribe);
+        if (subscribe == 0) {
+            $('#submit1>img').attr('src', 'images/leadto.png').css('max-width', '70%').off('click').on('click', function() {
+                window.open('http://mp.weixin.qq.com/s?__biz=MzI3ODExMzc0NA==&mid=402816554&idx=1&sn=f2abdcb138a431a0bd4490cb481620df&scene=1&srcid=0128uvWVQjTWSm8MW88zW10G&from=singlemessage&isappinstalled=0#wechat_redirect');
+            });
+        } else {
+            $('#submit1>img').css('src', 'images/joinnow.png').off('click').on('click', function() {
+                submit1(headimgurl, nickname, openid, subscribe, bymp, shareOpenid);
+            });
+        }
+
+
+        //显示获奖的用户
+        $.ajax({
+            url: '/rotate/getrewarder',
+            type: 'GET',
+            success: function(data) {
+                for (var i = 0; i < data.length; i++) {
+                    var hiu = data[i].headimgurl;
+                    var nname = data[i].nickname;
+                    var li = $("<li><div class='rwheadimg'><img src='" + hiu + "' alt=''></div><div class='info'><div class='info1'><div class='name'>" + nname + "</div><div class='date'>" + data[i].rewardTime + "</div></div> <div class='info2'> <div class='reward'>200元</div><div class='instruction'>桃花潭里深千尺，不及家家送我钱</div></div> </div><hr></li>");
+                    $('#rewarders>ul').append(li);
+                }
+
+            },
+            error: function() {
+
+            }
+        });
+    }
+
+    function submit1() {
+        $('#floatdiv').css("display", "block");
+        showMask($('#floatdiv'));
+        $('#floatdiv').on('click', function() {
+            hideMask();
+            $(this).hide();
+        })
+    }
+})
+</script>
+
+</html>

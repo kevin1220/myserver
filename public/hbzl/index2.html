@@ -1,0 +1,550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0" />
+    <title>10万现金红包，租借你的朋友圈</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <!-- <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="css/index2.css" />
+    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="js/awardRotate.js"></script>
+    <script src="js/tools.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+    var turnplate = {
+        restaraunts: [], //大转盘奖品名称
+        colors: [], //大转盘奖品区块对应背景颜色
+        outsideRadius: 192, //大转盘外圆的半径
+        textRadius: 155, //大转盘奖品位置距离圆心的距离
+        insideRadius: 68, //大转盘内圆的半径
+        startAngle: 0, //开始角度
+        bRotate: false, //false:停止;ture:旋转
+        config: [], //后台中的自定义配置
+        rule: '', //设置活动规则
+        playcount: 0, //设置每个人玩的次数限制
+        txt: ''
+    };
+    var openid;
+    var shareOpenid;
+    var nickname;
+    var isreward;
+    var bymp;
+    var subscribe;
+    var headimgurl;
+    var userBinfo;
+    $(document).ready(function() {
+
+        var userinfo = localStorage.getItem('userinfo');
+        userBinfo = localStorage.getItem('userBinfo');
+        userinfo = JSON.parse(userinfo);
+        console.log("index1中localStorage中的userinfo:" + JSON.stringify(userinfo));
+        openid = userinfo.openid;
+        bymp = userinfo.bymp;
+        shareOpenid = userinfo.shareOpenid;
+        console.log("通过缓存获取到的shareOpenid:" + shareOpenid);
+        subscribe = userinfo.subscribe;
+        nickname = userinfo.nickname;
+        headimgurl = userinfo.headimgurl;
+        jssdk(openid);
+
+        setinfo(headimgurl, nickname, openid, subscribe, bymp, shareOpenid);
+        console.log('openid:' + userinfo.openid)
+        console.log('shareOpenid:' + shareOpenid)
+
+        function setinfo(headimgurl, nickname, openid, subscribe, bymp, shareOpenid) {
+            var nickname = nickname;
+
+            var subscribe = subscribe;
+            var bymp = bymp; //是否从公众号进入
+
+
+            //这里需要先判断用户是否从公众号进入，如果是从公众号进入，再判断是否已经玩过，如果没有玩过，显示蹭红包，如果已经玩过，显示继续寻求帮助，如果是从朋友圈进来的，再判断是否已经关注公众号，如果没有关注公众号，则链接到推广页面，如果已经关注公众号，则判断是否已经玩过，如果没有玩过，则显示我也要拿现金红包，如果已经玩过，则显示继续寻求帮助
+            $.ajax({
+                url: '/rotate/getrelation?openid=' + openid + '&shareOpenid=' + shareOpenid,
+                type: 'GET',
+                success: function(data) {
+                    if (bymp === 'undefined') {
+                        bymp = true;
+                    }
+                    var follow = false; //是否关注公众号
+                    var played = false; //是否已经玩过
+                    if (data.length > 0) {
+                        played = data[0].played;
+                    }
+                    if (subscribe == 1) {
+                        follow = true;
+                    }
+                    console.log('bymp:' + bymp + 'follow:' + follow + 'played:' + played);
+                    if (bymp === true) {
+                        if (follow == true) {
+                            if (played === 'true') {
+                                console.log(1);
+                                // 显示继续寻求帮助按钮
+                                // 不能抽奖
+                                // 显示好友助力列表
+                                // 需要修正，当前显示的是蹭红包的按钮，应该显示继续寻求帮助按钮
+                                $('#friends').css('display', 'block');
+                                $('#crg>img').attr('src', 'images/getfriend.png').on('click', function() {
+                                    $('#floatdiv').css("display", "block");
+                                    showMask($('#floatdiv'));
+                                })
+                                $('#floatdiv').on('click', function() {
+                                    hideMask();
+                                    $(this).hide();
+                                })
+                                if (isreward === 'true') {
+                                    $('#rewarded').css('display', 'block');
+                                    $('#crg>img').css('display', 'none');
+                                }
+                            } else {
+                                console.log(2);
+                                //显示蹭红包按钮
+                                $('.headimg').off('click');
+                                $('#crg>img').attr('src', 'images/crg.png').on('click', function() {
+                                    $('#floatdiv').css("display", "block");
+                                    showMask($('#floatdiv'));
+                                })
+                                $('#floatdiv').on('click', function() {
+                                    hideMask();
+                                    $(this).hide();
+                                })
+
+                            }
+                        } else {
+                            $('#friends').css('display', 'none');
+                            $('#crg>img').attr('src', 'images/leadto.png').css('max-width', '70%').on('click', function() {
+                                window.open('http://mp.weixin.qq.com/s?__biz=MzI3ODExMzc0NA==&mid=402816554&idx=1&sn=f2abdcb138a431a0bd4490cb481620df&scene=1&srcid=0128uvWVQjTWSm8MW88zW10G&from=singlemessage&isappinstalled=0#wechat_redirect');
+                            });
+                        }
+
+                    } else {
+                        if (follow === true) {
+                            if (played === 'true') {
+                                console.log(3);
+                                // 显示继续寻求帮助按钮
+                                // 显示好友助力列表
+                                // 需要修正，当前显示的是蹭红包的按钮，应该显示继续寻求帮助按钮
+                                if (openid === shareOpenid) {
+                                    $('#startgame').off('click');
+                                    return;
+                                }
+                                $('#friends').css('display', 'block');
+                                $('#startgame').off('click').on('click', function() {
+                                    showcontentBox('不能重复为好友助力哦！！', '50%');
+                                });
+                                $('#crg>img').attr('src', 'images/getfriend.png').on('click', function() {
+                                    $('#floatdiv').css("display", "block");
+                                    showMask($('#floatdiv'));
+                                })
+                                $('#floatdiv').on('click', function() {
+                                    hideMask();
+                                    $(this).hide();
+                                })
+                            } else {
+                                console.log(4)
+                                    // 显示我也要拿现金红包按钮
+                                var subscribeB = JSON.parse(userBinfo)[0].subscribe;
+                                console.log('分享者关注了：' + subscribeB);
+                                if (subscribeB == 0) {
+                                    $('#startgame').off('click').on('click', function() {
+                                        showcontentBox('你的好友没有关注我们的公众号，不能给予助力！！', '50%');
+                                    });
+                                    return;
+                                }
+                                console.log("用来判断openid和shareOpenid是否相同");
+                                console.log(openid);
+                                console.log(shareOpenid);
+                                if (openid === shareOpenid) {
+                                    $('#startgame').off('click');
+                                    return;
+                                }
+                                $('#friends').css('display', 'none');
+                                $('#crg>img').attr('src', 'images/usto.png').css('max-width', '70%').on('click', function() {
+                                    $('#floatdiv').css("display", "block");
+                                    showMask($('#floatdiv'));
+                                })
+                                $('#floatdiv').on('click', function() {
+                                    hideMask();
+                                    $(this).hide();
+                                })
+                            }
+                        } else {
+                            console.log(5);
+                            if (played === 'true') {
+                                $('#friends').css('display', 'block');
+                                $('#startgame').off('click').on('click', function() {
+                                    showcontentBox('不能重复为好友助力哦！！', '50%');
+                                });
+                                $('#crg>img').attr('src', 'images/crg.png').on('click', function() {
+                                    $('#floatdiv').css("display", "block");
+                                    showMask($('#floatdiv'));
+                                })
+                                $('#floatdiv').on('click', function() {
+                                    hideMask();
+                                    $(this).hide();
+                                })
+                            } else {
+                                //链接到推广页面
+                                $('#friends').css('display', 'none');
+                                $('#crg>img').css('display', 'none');
+
+                            }
+
+                        }
+                    }
+                },
+                error: function() {
+
+                }
+            })
+
+
+        }
+
+
+        function getparams() {
+            var params = {};
+            params.username = $('#inputName').val();
+            params.phonenumber = $('#inputId').val();
+            params.reward = turnplate.txt;
+            return params;
+        }
+
+
+        //动态添加大转盘的奖品与奖品区域背景颜色
+        // turnplate.restaraunts = ["50M免费流量包", "10闪币", "谢谢参与", "5闪币", "10M免费流量包", "20M免费流量包", "20闪币 ", "30M免费流量包", "100M免费流量包", "2闪币"];
+        turnplate.colors = ["#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF"];
+
+
+        var rotateTimeOut = function() {
+            $('#wheelcanvas').rotate({
+                angle: 0,
+                animateTo: 2160,
+                duration: 8000,
+                callback: function() {
+                    console.log('网络超时，请检查您的网络设置！');
+                }
+            });
+        };
+
+        //旋转转盘 item:奖品位置; txt：提示语;
+        var rotateFn = function(item, txt, rewardNumber) {
+            turnplate.txt = txt;
+            var angles = 270 - (360 / (turnplate.restaraunts.length * 2) + 360 / turnplate.restaraunts.length * (item));
+            $('#wheelcanvas').stopRotate();
+            $('#wheelcanvas').rotate({
+                angle: 0,
+                animateTo: angles + 1800,
+                duration: 8000,
+                callback: function() {
+                    showcontentBox2(txt, "50%", function() {
+                        $.ajax({
+                            url: '/rotate/setrelation?played=true&reward=' + txt + '&openid=' + openid + '&shareOpenid=' + shareOpenid,
+                            type: 'GET',
+                            success: function() {
+                                alert('保存助力者信息');
+                                location.href = 'http://mp.weixin.qq.com/s?__biz=MzI3ODExMzc0NA==&mid=402816554&idx=1&sn=f2abdcb138a431a0bd4490cb481620df&scene=1&srcid=0128uvWVQjTWSm8MW88zW10G&from=singlemessage&isappinstalled=0#wechat_redirect';
+
+                            },
+                            error: function() {}
+                        });
+                    });
+
+                }
+            });
+        };
+
+        $('#startgame').click(function() {
+            if (turnplate.bRotate) return;
+            turnplate.bRotate = !turnplate.bRotate;
+            var item;
+            var reward;
+            var rewardNumber;
+            //获取随机数(奖品个数范围内)
+            for (i in turnplate.config) {
+                var p = turnplate.config[i].probability;
+
+                var random = rnd(1, Math.round(100 / p));
+                if (random === 1) {
+
+                    item = i;
+                    reward = turnplate.config[item].reward;
+                    rewardNumber = turnplate.config[item].number;
+                    break;
+                }
+                item = turnplate.config.length - 1;
+                reward = turnplate.config[item].reward;
+                rewardNumber = turnplate.config[item].number;
+            }
+            //奖品数量等于10,指针落在对应奖品区域的中心角度[252, 216, 180, 144, 108, 72, 36, 360, 324, 288]
+            rotateFn(item, reward, rewardNumber);
+        });
+    });
+
+    function rnd(n, m) {
+        var random = Math.floor(Math.random() * (m - n + 1) + n);
+        return random;
+    }
+
+
+    //页面所有元素加载完毕后执行drawRouletteWheel()方法对转盘进行渲染
+    window.onload = function() {
+        $('#bgimg').width($(window).width() + 'px');
+
+        $.ajax({
+            url: '/rotate/getconf',
+            type: 'GET',
+            success: function(data) {
+
+
+                turnplate.playcount = data[0].count;
+                // console.log(data);
+                // turnplate.config = JSON.parse(data);
+                turnplate.config = data;
+                // console.log(turnplate.config);
+                for (var i = 0; i < turnplate.config.length; i++) {
+                    turnplate.restaraunts.push(turnplate.config[i].reward);
+                }
+                drawRouletteWheel();
+
+            },
+            error: function(err) {
+                console.log(err)
+            }
+        });
+
+    };
+
+    function showcontentBox(txt, top, _callback) {
+        $('#contentBox2 h6').text(txt);
+        $('#contentBox2').css({
+            'display': 'block',
+            'top': top
+        });
+        $('#contentBox2 .ok').on('click', function() {
+            $('#contentBox2').hide();
+            execCallBack(_callback);
+        })
+    }
+
+    function showcontentBox2(txt, top, _callback) {
+        $('#contentBox2 h6').text(txt);
+        $('#contentBox2').css({
+            'display': 'block',
+            'top': top
+        });
+        setTimeout(function() {
+            $.ajax({
+                url: '/rotate/setrelation?played=true&reward=' + txt + '&openid=' + openid + '&shareOpenid=' + shareOpenid,
+                type: 'GET',
+                success: function() {
+                    location.href = 'http://mp.weixin.qq.com/s?__biz=MzI3ODExMzc0NA==&mid=402816554&idx=1&sn=f2abdcb138a431a0bd4490cb481620df&scene=1&srcid=0128uvWVQjTWSm8MW88zW10G&from=singlemessage&isappinstalled=0#wechat_redirect';
+
+                }
+            });
+        }, 2000);
+        $('#contentBox2 .ok').on('click', function() {
+            $('#contentBox2').hide();
+            execCallBack(_callback);
+        })
+    }
+
+    //获取助力列表
+    function getaidlist() {
+        var aidsummary = 0;
+        console.log("获取助力列表的shareOpenid:" + shareOpenid)
+        $.ajax({
+            url: '/rotate/getaidlist?openid=' + shareOpenid,
+            type: 'GET',
+            success: function(data) {
+                console.log("我的助力好友列表：" + JSON.stringify(data))
+                aidsummary = data.aidsummary;
+                var aidinfo = data.aidinfo;
+                //设置转轮上面的标题的数据
+                $('.gametitle:nth-child(1)>span').text(data.byaidname).css('color', "yellow");
+                $('.headimg').attr('src', data.byaidheadimgurl);
+                $('#aidsummary').text(aidsummary).css('color', "yellow");
+                // 动态获取助力的好友信息
+                console.log("助力好友的人数：" + JSON.stringify(aidinfo))
+                if (aidinfo.length > 0) {
+
+                    for (var i = 0; i < aidinfo.length; i++) {
+                        var li = $("<li><div class='rwheadimg'><img src='" + aidinfo[i].headimgurl + "' alt=''></div><div class='info'><div class='info1'><div class='name'>" + aidinfo[i].nickname + "</div><div class='date'>" + aidinfo[i].rewardTime + "</div></div><div class='info2'><div class='reward'>" + aidinfo[i].reward + "元</div><div class='instruction'>桃花潭里深千尺，不及家家送我钱</div></div></div><hr></li>");
+                        $('.friendslist>ul').append(li);
+                    }
+                }
+
+
+
+                $('#friends').css('display', 'block');
+                $('#friends .friendstitle2>span').text(aidinfo.length).css('color', 'red');
+
+
+                // 显示获奖的用户
+                $.ajax({
+                    url: '/rotate/getrewarder',
+                    type: 'GET',
+                    success: function(data) {
+                        for (var i = 0; i < data.length; i++) {
+                            var hiu = data[i].headimgurl;
+                            var nname = data[i].nickname;
+                            var rewardTime = data[i].rewardTime;
+                            var li = $("<li><div class='rwheadimg'><img src='" + hiu + "' alt=''></div><div class='info'><div class='info1'><div class='name'>" + nname + "</div><div class='date'>" + rewardTime + "</div></div> <div class='info2'> <div class='reward'>200元</div><div class='instruction'>桃花潭里深千尺，不及家家送我钱</div></div> </div><hr></li>");
+                            $('#rewarders>ul').append(li);
+                        }
+                        $('#rewardtitle').css('display', 'block');
+                        $('#rewarders').css('display', 'block');
+
+                    },
+                    error: function() {
+
+                    }
+                });
+
+
+
+
+            },
+            error: function() {
+
+            }
+        });
+    }
+
+    function drawRouletteWheel() {
+
+        var canvas = document.getElementById("wheelcanvas");
+        if (canvas.getContext) {
+            //根据奖品个数计算圆周角度
+            // console.log('length:'+turnplate.restaraunts.length);
+            var arc = Math.PI / (turnplate.restaraunts.length / 2);
+            var ctx = canvas.getContext("2d");
+            //在给定矩形内清空一个矩形
+            ctx.clearRect(0, 0, 422, 422);
+            //strokeStyle 属性设置或返回用于笔触的颜色、渐变或模式  
+            ctx.strokeStyle = "#FFBE04";
+            //font 属性设置或返回画布上文本内容的当前字体属性
+            ctx.font = '16px Microsoft YaHei';
+            for (var i = 0; i < turnplate.restaraunts.length; i++) {
+                var angle = turnplate.startAngle + i * arc;
+                ctx.fillStyle = turnplate.colors[i];
+                ctx.beginPath();
+                //arc(x,y,r,起始角,结束角,绘制方向) 方法创建弧/曲线（用于创建圆或部分圆）    
+                ctx.arc(211, 211, turnplate.outsideRadius, angle, angle + arc, false);
+                ctx.arc(211, 211, turnplate.insideRadius, angle + arc, angle, true);
+                ctx.stroke();
+                ctx.fill();
+                //锁画布(为了保存之前的画布状态)
+                ctx.save();
+
+                //----绘制奖品开始----
+                ctx.fillStyle = "#E5302F";
+                var text = turnplate.restaraunts[i];
+                var line_height = 17;
+                //translate方法重新映射画布上的 (0,0) 位置
+                ctx.translate(211 + Math.cos(angle + arc / 2) * turnplate.textRadius, 211 + Math.sin(angle + arc / 2) * turnplate.textRadius);
+
+                //rotate方法旋转当前的绘图
+                ctx.rotate(angle + arc / 2 + Math.PI / 2);
+
+                /** 下面代码根据奖品类型、奖品名称长度渲染不同效果，如字体、颜色、图片效果。(具体根据实际情况改变) **/
+                if (text.indexOf("M") > 0) { //流量包
+                    var texts = text.split("M");
+                    for (var j = 0; j < texts.length; j++) {
+                        ctx.font = j == 0 ? 'bold 20px Microsoft YaHei' : '16px Microsoft YaHei';
+                        if (j == 0) {
+                            ctx.fillText(texts[j] + "M", -ctx.measureText(texts[j] + "M").width / 2, j * line_height);
+                        } else {
+                            ctx.fillText(texts[j], -ctx.measureText(texts[j]).width / 2, j * line_height);
+                        }
+                    }
+                } else if (text.indexOf("M") == -1 && text.length > 6) { //奖品名称长度超过一定范围 
+                    text = text.substring(0, 6) + "||" + text.substring(6);
+                    var texts = text.split("||");
+                    for (var j = 0; j < texts.length; j++) {
+                        ctx.fillText(texts[j], -ctx.measureText(texts[j]).width / 2, j * line_height);
+                    }
+                } else {
+                    //在画布上绘制填色的文本。文本的默认颜色是黑色
+                    //measureText()方法返回包含一个对象，该对象包含以像素计的指定字体宽度
+                    ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+                }
+
+                //添加对应图标
+                if (text.indexOf("闪币") > 0) {
+                    var img = document.getElementById("shan-img");
+                    img.onload = function() {
+                        ctx.drawImage(img, -15, 10);
+                    };
+                    ctx.drawImage(img, -15, 10);
+                } else if (text.indexOf("谢谢参与") >= 0) {
+                    var img = document.getElementById("sorry-img");
+                    img.onload = function() {
+                        ctx.drawImage(img, -15, 10);
+                    };
+                    ctx.drawImage(img, -15, 10);
+                }
+                //把当前画布返回（调整）到上一个save()状态之前 
+                ctx.restore();
+                //----绘制奖品结束----
+            }
+            getaidlist();
+
+        }
+
+    }
+    </script>
+</head>
+
+<body>
+    <img src="images/1.png" id="shan-img" style="display:none;" />
+    <img src="images/2.png" id="sorry-img" style="display:none;" />
+    <div id="header">
+        <img src="images/headergame.jpg" alt="">
+    </div>
+    <div id="main">
+        <img src="images/bodygame.jpg" alt="">
+        <div class="banner">
+            <div class="gametitle">我是 <span>xxx</span>&nbsp;我的新年红包就靠你了</div>
+            <div class="gametitle"><span style="color:yellow">200</span>元现金红包,已筹集 <span id="aidsummary">0</span>元</div>
+            <div class="turnplate" style="background-image:url(images/turnplate-bg.png);background-size:100% 100%;">
+                <canvas class="item" id="wheelcanvas" width="422px" height="422px"></canvas>
+                <img class="pointer" src="images/turnplate-pointer.png" />
+                <img id="startgame" class="headimg" src="" alt="">
+            </div>
+            <div id="crg"><img src="" alt=""></div>
+            <div id="rewarded">恭喜您已获取红包，请继续关注“碧桂园南沙湾1号”发现更多精彩。</div>
+        </div>
+    </div>
+    <div id="foot">
+        <!-- 好友助力列表 -->
+        <div id="friends">
+            <div class="friendstitle">
+                <div class="friendstitle2">已有 <span>0</span>个小伙伴参与蹭红包，看看谁帮了忙</div>
+            </div>
+            <div class="friendslist">
+                <ul>
+                </ul>
+            </div>
+        </div>
+        <div id="rewardtitle">获奖用户</div>
+        <br>
+        <div id="rewarders">
+            <ul>
+            </ul>
+        </div>
+    </div>
+    <!-- 自定义弹出框 -->
+    <div class="contentBox" id="contentBox2">
+        <h6>领取成功</h6>
+        <button class="ok">OK</button>
+    </div>
+    <div id="floatdiv">
+        <img src="images/share.png" alt="">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>领取奖品</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style type="text/css" media="screen">
+    #noreward {
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="noreward">你没有领取任何的红包</div>
+    <div id="reward">
+        <div>
+            <div id=headimgurl></div>
+        </div>
+        <div>
+            <div id=nickname></div>
+            <div id=reward></div>
+        </div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js" async defer></script>
+    <script type="text/javascript" src="js/tools.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var userinfo = localStorage.getItem("userinfo");
+        userinfo = JSON.parse(userinfo);
+        jssdk(userinfo.openid);
+        var isreward = userinfo.isreward;
+        console.log(isreward);
+        if (isreward == undefined) {
+            $('#reward').css('display','none');
+            $('#noreward').css('display','block');
+        } else {
+            $('#headimgurl').text(userinfo.headimgurl);
+            $('#nickname').text(userinfo.headimgurl);
+            $('#reward').text(userinfo.headimgurl);
+        }
+
+    })
+    </script>
+</body>
+
+</html>

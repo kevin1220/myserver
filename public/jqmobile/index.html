@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>1111</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<!-- 引入 jQuery mobile样式 -->
+	<link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.
+	css">
+	<!-- 引入 jQuery 库 -->
+	<script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+	<!-- 引入 jQuery Mobile 库 -->
+	<script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src='../javascripts/base.js'></script>
+    <script src='js/index.js'></script>
+	<script type="text/javascript">
+	// events, hdistance, vdistance, eventhandle
+		$(document).ready(function() {
+    			var pages = $("[data-role='page']");
+                pslider(pages,function(){
+                    console.log('切换页面完成后执行');
+                });
+		});
+		
+	</script>
+</head>
+<body>
+
+	<div data-role="page" id="one">
+        
+        <div data-role="content">
+            <img src="images/lottery1.jpg" height="1030" width="640" alt="">
+        </div>
+        
+    </div>
+    <div data-role="page" id="two">
+        
+        <div data-role="content">
+            <img src="images/lottery2.jpg" height="1030" width="640" alt="">
+        </div>
+        
+    </div>
+    <div data-role="page" id="three">
+        
+        <div data-role="content">
+            <img src="images/lottery3.jpg" height="1030" width="640" alt="">
+        </div>
+        
+    </div>
+    <div data-role="page" id="four">
+        
+        <div data-role="content">
+            <img src="images/lottery4.jpg" height="1030" width="640" alt="">
+        </div>
+        
+    </div>
+    <div data-role="page" id="five">
+        
+        <div data-role="content">
+            <img src="images/lottery5.jpg" height="1030" width="640" alt="">
+        </div>
+        
+    </div>
+
+
+	<script type="text/javascript" src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
+
+	<script type="text/javascript">
+	$.ajax({
+		url:'/hezheng/getconf?url='+location.href,
+		success:function(config){
+			console.log(config.appid);
+			console.log(config.timestamp);
+			console.log(config.nonceStr);
+			console.log(config.signature);
+			console.log(config.jsApiList);
+			wx.config({
+			    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+			    appId: config.appid, // 必填，公众号的唯一标识
+			    timestamp:config.timestamp , // 必填，生成签名的时间戳
+			    nonceStr: config.nonceStr, // 必填，生成签名的随机串
+			    signature: config.signature,// 必填，签名，见附录1
+			    jsApiList: [''] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			});	
+		}
+	});
+	
+	
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>4月1日天河城20米巨屏表白，点击报名！
+</title>
+    <link rel="stylesheet" href="../css/biaobai.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+
+<body>
+    <div class="bg">
+        <img src="../images/biaobai/01.jpg" alt="">
+    </div>
+    <div class="logo animated fadeIn"><img src="../images/biaobai/02.png" alt=""></div>
+    <div class="txt1 animated fadeIn"><img src="../images/biaobai/03.png" alt=""></div>
+    <div class="txt2 animated myscale"><img src="../images/biaobai/04.png" alt=""></div>
+    <div class="form1 animated fadeIn">
+        <div class="field name">
+            <input required="true" type="text" name="" value="" placeholder="请输入你的名字" maxlength="5">
+        </div>
+        <div class="field tel">
+            <input required="true" type="text" name="" value="" placeholder="请输入你的号码" maxlength="11">
+        </div>
+        <div class="field saying">
+            <input required="true" type="text" name="" value="" placeholder="请输入你的告白话语，不超过15字喔" maxlength="15">
+        </div>
+    </div>
+    <div class="submit animated fadeIn"><img src="../images/biaobai/08.png" alt=""></div>
+    <div class="txt3 animated fadeIn"><img src="../images/biaobai/09.png" alt=""></div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="../js/tools.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        jssdk('4月1日天河城20米巨屏表白，点击报名！', '点击填写爱的宣言，4.1下午会在天河城大屏幕直播！', 'http://www.wit-orange.com/baoli/biaobai', 'http://www.wit-orange.com/baoli/images/biaobai/shareimg.png');
+        $('.submit>img').on('click', function() {
+            var name = $('.name>input').val();
+            var tel = $('.tel>input').val();
+            var saying = $('.saying>input').val();
+            $.ajax({
+                url: '/baoli/biaobai/submit',
+                type: 'POST',
+                data: {
+                    tel: tel,
+                    name: name,
+                    saying: saying
+                },
+                success: function(data) {
+                    alert('提交成功')
+                },
+                error: function(data) {
+                    alert('电话号码已经存在')
+                }
+            });
+        });
+    })
+    </script>
+</body>
+
+</html>

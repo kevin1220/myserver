@@ -1,0 +1,154 @@
+body,
+ul,
+ol,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+table,
+td,
+img,
+div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 1em;
+    font-family: 'SimHei';
+}
+
+input {
+    border-radius: 0.3em;
+    color: white;
+    line-height: 2em;
+    /* for non-ie */
+    line-height: 22px\9;
+    /* for ie */
+}
+
+input::-ms-input-placeholder {
+    text-align: center;
+    font-size: 1em;
+}
+
+input::-webkit-input-placeholder {
+    text-align: center;
+    font-size: 1em;
+}
+a{
+    text-decoration:none;
+    color:#BD9B9E;
+}
+
+#header {
+    height: 5.6%;
+    background-color: #8E0718;
+    position: absolute;
+    width: 100%;
+}
+
+#header>ul {
+    line-height: 2;
+    list-style: none;
+}
+
+#header li {
+    width: 33.333%;
+    float: left;
+    height: 10%;
+    color: #BD9B9E;
+    text-align: center;
+}
+
+#main {}
+
+#main>img {
+    min-width: 100%;
+    max-width: 100%;
+}
+
+#wxinfo {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 10%;
+}
+
+#headimgbg {
+    margin-bottom: -32%;
+}
+
+#headimgbg>img {
+    max-width: 32%;
+}
+
+#headimg {
+    margin-bottom: 5%;
+}
+
+#headimg>img {
+    max-width: 30%;
+    border-radius: 100%;
+}
+
+#wxname {
+    color: #F3BD63;
+    margin-bottom: 15%;
+    font-size: 1em;
+}
+
+#diyform {
+    color: #F3BD63;
+    text-align: center;
+    font-size: 1em
+}
+
+#diyform input {
+    opacity: 0.8;
+    background-color: #f00;
+}
+
+#diyform>label {
+    margin-right: 1em;
+}
+
+#diyform img {
+    width: 7em;
+}
+#nickname{
+    color:#F1B763;
+}
+
+#submit1 {
+    margin-top: 10%;
+}
+
+
+/*弹出框的样式*/
+
+#contentBox2 {
+    background-color: rgba(255, 0, 0, 0.8);
+    position: absolute;
+    display: none;
+    width: 70%;
+    left: 15%;
+    top:15%;
+    text-align: center;
+    color:#80FF80;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    border-radius: 0.3em;
+}
+
+#contentBox2 .ok {
+    margin-top:1em;
+    border-radius: 0.3em;
+    padding: 1em 3em;
+    background-color: #f00;
+    color:white;
+}

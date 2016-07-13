@@ -1,0 +1,726 @@
+.swiper-container {
+    width: inherit;
+    height: inherit;
+}
+
+.arrow {
+    background-image: url("../images/arrow.png");
+    width: 84px;
+    height: 81px;
+    display: none;
+    position: absolute;
+    z-index: 10;
+    bottom: -3%;
+    background-repeat: no-repeat;
+    left: 50%;
+    margin-left: -42px;
+    background-position: center center;
+    -webkit-animation: arrow 1s linear infinite both;
+    -o-animation: arrow 1s linear infinite both;
+    animation: arrow 1s linear infinite both;
+}
+
+.music {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    left: 100%;
+    margin-left: -48px;
+    top: 16px;
+    z-index: 2;
+    display: none;
+}
+
+
+/*loading*/
+
+.pageFirst {
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    z-index: 10;
+}
+
+#loadingimg {
+    width: 64px;
+    height: 64px;
+    display: block;
+}
+
+.loading {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    margin-top: -50px;
+    left: 50%;
+    margin-left: -50px;
+}
+
+
+/*进度条动画*/
+
+.loadEffect {
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.loadEffect span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #7F69C1;
+    position: absolute;
+    -webkit-animation: load 1.04s ease infinite;
+}
+
+@-webkit-keyframes load {
+    0% {
+        -webkit-transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(.3);
+        opacity: 0.5;
+    }
+}
+
+.loadEffect span:nth-child(1) {
+    left: 0;
+    top: 50%;
+    margin-top: -10px;
+    -webkit-animation-delay: 0.13s;
+}
+
+.loadEffect span:nth-child(2) {
+    left: 14px;
+    top: 14px;
+    -webkit-animation-delay: 0.26s;
+}
+
+.loadEffect span:nth-child(3) {
+    left: 50%;
+    top: 0;
+    margin-left: -10px;
+    -webkit-animation-delay: 0.39s;
+}
+
+.loadEffect span:nth-child(4) {
+    top: 14px;
+    right: 14px;
+    -webkit-animation-delay: 0.52s;
+}
+
+.loadEffect span:nth-child(5) {
+    right: 0;
+    top: 50%;
+    margin-top: -10px;
+    -webkit-animation-delay: 0.65s;
+}
+
+.loadEffect span:nth-child(6) {
+    right: 14px;
+    bottom: 14px;
+    -webkit-animation-delay: 0.78s;
+}
+
+.loadEffect span:nth-child(7) {
+    bottom: 0;
+    left: 50%;
+    margin-left: -10px;
+    -webkit-animation-delay: 0.91s;
+}
+
+.loadEffect span:nth-child(8) {
+    bottom: 14px;
+    left: 14px;
+    -webkit-animation-delay: 1.04s;
+}
+
+.float {
+    position: absolute;
+    background: #999;
+    width: 0;
+    right: 0;
+    top: 0;
+    border-radius: 1em;
+    animation: process 2s ease-in-out;
+}
+
+
+/*进度条动画*/
+
+@keyframes process {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}
+
+.swiper-container,
+.swiper-slide {
+    background: url(../images/2P/bg.jpg) no-repeat;
+    background-size: cover;
+}
+
+
+/*p1*/
+
+.p1 {
+    /*overflow: hidden;*/
+    width: inherit;
+    height: inherit;
+    position: relative;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    font-size: 0;
+    background-image: url(../images/1P/bg.jpg);
+    background-size: cover;
+}
+
+img.p1_bg {
+    position: absolute;
+    max-width: 100%;
+    min-width: 100%;
+    left: 0;
+    top: 0;
+}
+
+img.p1_logo {
+    position: absolute;
+    width: 38%;
+    left: 4%;
+    top: 4%;
+}
+
+.p1_text1 {
+    position: absolute;
+    width: 100%;
+    left: 1%;
+    top: 35%;
+}
+img.p1_text1_zhao {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+img.p1_text1_ji {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+img.p1_text1_fo {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+img.p1_text1_shan {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+img.p1_text1_qun {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+img.p1_text1_ying {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+img.p1_logo2 {
+    position: absolute;
+    width: 24%;
+    left: 69%;
+    top: 10%;
+}
+
+img.p1_text2 {
+    position: absolute;
+    width: 50%;
+    left: 15%;
+    top: 17%;
+}
+
+img.p1_man {
+    position: absolute;
+    width: 38%;
+    left: 62%;
+    top: 58%;
+}
+
+
+/*p2*/
+
+img.p2_bg {
+    position: absolute;
+    top: 0;
+    max-width: 100%;
+    min-width: 100%;
+    left: 0;
+}
+
+.p2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    height: inherit;
+    width: inherit;
+    font-size: 0;
+    background-image: url(../images/2P/bg.jpg);
+    background-size: cover;
+}
+
+img.p2_logo {
+    position: absolute;
+    width: 38%;
+    left: 4%;
+    top: 4%;
+}
+
+img.p2_map {
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+
+.p2_mapbox {
+    position: relative;
+    margin-top: 4%;
+    left: 0;
+}
+
+img.p2_light_circle {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+img.p2_light {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+img.p2_text1 {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 18%;
+}
+
+img.p2_flag {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 75%;
+}
+
+img.p2_text2 {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 30%;
+}
+
+img.p2_cup {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 7%;
+}
+
+
+/*p3*/
+
+.p3 {
+    font-size: 0;
+    position: absolute;
+    overflow: hidden;
+    width: inherit;
+    height: inherit;
+    left: 0;
+    top: 0;
+    background-image: url(../images/2P/bg.jpg);
+    background-size: cover;
+}
+
+img.p3_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+img.p3_logo {
+    position: absolute;
+    width: 38%;
+    left: 4%;
+    top: 4%;
+}
+
+img.p3_text1 {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 18%;
+}
+
+img.p3_flag {
+    position: relative;
+    width: 100%;
+    left: 0;
+    margin-top: 7%;
+}
+
+.p3_picbox {
+    width: 82%;
+    position: relative;
+    font-size: 0;
+    margin-top: 12%;
+    margin-left: 9%;
+    text-align: justify;
+}
+
+.p3_picbox>img {
+    max-width: 49%;
+    min-width: 49%;
+}
+
+img.p3_text2 {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 30%;
+}
+
+
+/*p4*/
+
+.p4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 0;
+    width: inherit;
+    height: inherit;
+    overflow: hidden;
+    background-image: url(../images/2P/bg.jpg);
+    background-size: cover;
+}
+
+img.p4_bg {
+    position: absolute;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+img.p4_logo {
+    position: absolute;
+    width: 38%;
+    left: 4%;
+    top: 4%;
+}
+
+img.p4_text1 {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 18%;
+}
+
+img.p4_flag {
+    position: relative;
+    width: 100%;
+    left: 0;
+    margin-top: 7%;
+}
+
+.p4_mapbox {
+    position: relative;
+    width: 100%;
+    left: 0;
+    margin-top: 6%;
+}
+
+img.p4_map {
+    position: absolute;
+    max-width: 100%;
+    min-width: 100%;
+    left: 0;
+    top: 0;
+}
+
+img.p4_light {
+    max-width: 100%;
+    min-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: .5;
+}
+
+img.p4_text {
+    position: relative;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+img.p4_text2 {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 30%;
+}
+
+
+/*p5*/
+
+.p5 {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    top: 0;
+    left: 0;
+    background-image: url(../images/2P/bg.jpg);
+    background-size: cover;
+}
+
+img.p5_bg {
+    position: absolute;
+    max-width: 100%;
+    min-width: 100%;
+    left: 0;
+    top: 0;
+}
+
+img.p5_logo {
+    position: absolute;
+    width: 38%;
+    left: 4%;
+    top: 4%;
+}
+
+img.p5_text1 {
+    position: relative;
+    width: 100%;
+    left: 0;
+    margin-top: 30%;
+}
+
+img.p5_text2 {
+    position: relative;
+    width: 100%;
+    left: 0;
+    margin-top: 8%;
+}
+
+img.p5_line {
+    position: relative;
+    width: 100%;
+    left: 0;
+    margin-top: 8%;
+}
+
+img.p5_text3 {
+    position: relative;
+    width: 100%;
+    left: 0;
+    margin-top: 6%;
+}
+
+img.p5_tel {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 8%;
+}
+
+img.p5_qrcode {
+    position: relative;
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 6%;
+}
+
+
+/*自定义动画*/
+
+.spin {
+    -webkit-animation: spin 1.5s linear infinite both;
+    -o-animation: spin 1.5s linear infinite both;
+    animation: spin 1.5s linear infinite both;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    from {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes arrow {
+    from {
+        margin-bottom: 0;
+        opacity: 1;
+    }
+    to {
+        margin-bottom: 16px;
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes arrow {
+    from {
+        margin-bottom: 0;
+        opacity: 1;
+    }
+    to {
+        margin-bottom: 16px;
+        opacity: 0;
+    }
+}
+
+.zhao_bigToSmall {
+    -webkit-animation-name: bigToSmall;
+    -o-animation-name: bigToSmall;
+    animation-name: bigToSmall;
+}
+.ji_bigToSmall {
+    -webkit-animation-name: bigToSmall;
+    -o-animation-name: bigToSmall;
+    animation-name: bigToSmall;
+}
+.fo_bigToSmall {
+    -webkit-animation-name: bigToSmall;
+    -o-animation-name: bigToSmall;
+    animation-name: bigToSmall;
+}
+.shan_bigToSmall {
+    -webkit-animation-name: bigToSmall;
+    -o-animation-name: bigToSmall;
+    animation-name: bigToSmall;
+}
+.qun_bigToSmall {
+    -webkit-animation-name: bigToSmall;
+    -o-animation-name: bigToSmall;
+    animation-name: bigToSmall;
+}
+.ying_bigToSmall {
+    -webkit-animation-name: bigToSmall;
+    -o-animation-name: bigToSmall;
+    animation-name: bigToSmall;
+}
+
+.bigToSmall_p5 {
+    -webkit-animation: bigToSmall .6s 1.5s cubic-bezier(0.55, 0.06, 0.68, 0.19) both;
+    -o-animation: bigToSmall .6s 1.5s cubic-bezier(0.55, 0.06, 0.68, 0.19) both;
+    animation: bigToSmall .6s 1.5s cubic-bezier(0.55, 0.06, 0.68, 0.19) both;
+}
+
+@keyframes bigToSmall {
+    from {
+        transform: scale(4, 4);
+        -webkit-transform: scale(4, 4);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes bigToSmall {
+    from {
+        transform: scale(4, 4);
+        -webkit-transform: scale(4, 4);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        opacity: 1;
+    }
+}
+
+.spangled {
+    -webkit-animation: spangled 1s 3.3s linear infinite both;
+    -o-animation: spangled 1s 3.3s linear infinite both;
+    animation: spangled 1s 3.3s linear infinite both;
+}
+
+.spangled_p2_light {
+    opacity: 0;
+    -webkit-animation: spangled 0.8s 3.1s linear infinite both;
+    -o-animation: spangled 0.8s 3.1s linear infinite both;
+    animation: spangled 0.8s 3.1s linear infinite both;
+}
+
+.spangled_p4_light {
+    opacity: 0;
+    -webkit-animation: spangled 0.8s 3.1s linear infinite both;
+    -o-animation: spangled 0.8s 3.1s linear infinite both;
+    animation: spangled 0.8s 3.1s linear infinite both;
+}
+
+@keyframes spangled {
+    0% {
+        opacity: 0;
+    }
+    50%,
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes spangled {
+    0% {
+        opacity: 0;
+    }
+    50%,
+    100% {
+        opacity: 1;
+    }
+}

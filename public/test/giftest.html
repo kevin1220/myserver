@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>gif test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style type="text/css">
+        
+        body{
+            margin:0;
+            padding:0;
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="css/gifplayer.css"> -->
+</head>
+
+<body>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.gifplayer.js"></script>
+    
+    <img class="gifplayer" date-src="images/louds.gif"  src="images/loud.png"/>
+    <button class="control">播放</button>
+    <script>
+        $(function(){
+            var gifplayer = $('.gifplayer').gifplayer({
+                label:"",
+            });
+            var played = false;
+            $('.control').on('click',function(){
+                if(!played){
+                    gifplayer.gifplayer("play");
+                    played = true;
+                }else{
+                    gifplayer.gifplayer("stop");
+                    played = false;
+                }
+            });
+            
+        })
+    </script>
+
+</body>
+
+</html>

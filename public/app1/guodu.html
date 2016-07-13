@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>过渡特效</title>
+    <script type="text/javascript">
+    window.onload = function() {
+        new Span();
+    }
+    var Span = function() {
+        var s = this;
+        var winWidth, winHeight;
+        var draw;
+        var span = document.createElement("div");
+        span.setAttribute("id", "span");
+        // 获取窗口宽度
+        if (window.innerWidth)
+            winWidth = window.innerWidth;
+        else if ((document.body) && (document.body.clientWidth))
+            winWidth = document.body.clientWidth;
+        // 获取窗口高度
+        if (window.innerHeight)
+            winHeight = window.innerHeight;
+        else if ((document.body) && (document.body.clientHeight))
+            winHeight = document.body.clientHeight;
+        // 通过深入 Document 内部对 body 进行检测，获取窗口大小
+        if (document.documentElement && document.documentElement.clientHeight && document.documentElement.clientWidth) {
+            winHeight = document.documentElement.clientHeight;
+            winWidth = document.documentElement.clientWidth;
+        }
+        draw()
+        span.style.width = winWidth * 0.2 + "px";
+        span.style.position = "absolute";
+        span.style.left = winWidth * 0.4 + "px";
+        span.style.textAlign = "center";
+        span.style.top = (winHeight / 2 - span.style.height / 2) + "px";
+        span.style.backgroundColor = "grey";
+        span.style.opacity="0.6";
+        span.style.color="rgba(255,255,255,1)";
+        span.style.fontSize="1em";
+        span.innerHTML = "<p>正在加载，请稍后...</p>";
+        document.body.appendChild(span);
+
+        function draw() {
+            var canvas = document.createElement("canvas");
+            canvas.width = 100;
+            canvas.height = 100;
+            canvas.style.backgroundColor = "rgba(255,0,0,1)"
+            var ctx = canvas.getContext("2d");
+            ctx.save();
+            ctx.moveTo(15, 15);
+            ctx.lineTo(50, 50);
+            ctx.rotate(45 * Math.PI / 180);
+            ctx.stroke();
+            span.appendChild(canvas);
+        }
+    }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

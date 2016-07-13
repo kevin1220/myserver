@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>【江湖头条】3600万悬赏</title>
+    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/swiper-3.2.7.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="swiper-container" id="swiper-container1">
+        <div class="swiper-wrapper">
+        <!-- loading -->
+            <div class="swiper-slide swiper-no-swiping">
+                <div class="loading"><img src="images/loading/loading.gif" alt="">
+                    <span id="progress">5</span><span>%</span>
+                </div>
+            </div>
+            <!-- p1 -->
+            <div class="swiper-slide">
+                <div class="p1_bg">
+                    <div class="ani p1_logo" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="0s"><img src="images/1P/logo.png" alt=""></div>
+                    <div class="ani p1_beard" swiper-animate-effect="bounceInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.4s"><img src="images/1P/beard.png" alt=""></div>
+                    <div class="ani p1_text" swiper-animate-effect="zoomIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.9s"><img src="images/1P/text.png" alt=""></div>
+                </div>
+            </div>
+            <!-- p2 -->
+            <div class="swiper-slide">
+                <div class="p2_bg">
+                    <div class="ani p2_detail" swiper-animate-effect="bounceInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0.8s"><img src="images/2P/detail.png" alt=""></div>
+                    <div class="ani p2_left" swiper-animate-effect="slideInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.2s"><img src="images/2P/left.png" alt=""></div>
+                    <div class="ani p2_right" swiper-animate-effect="slideInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.2s"><img src="images/2P/right.png" alt=""></div>
+                </div>
+            </div>
+            <!-- p3 -->
+            <div class="swiper-slide">
+                <div class="p3_bg">
+                    <div class="ani p3_left" swiper-animate-effect="slideInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0s"><img src="images/3P/left.png" alt=""></div>
+                    <div class="ani p3_right" swiper-animate-effect="slideInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                        <img src="images/3P/right.png" alt="">
+                        <div class="button">
+                            <div class="ani button1" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.7s"></div>
+                            <div class="ani button2" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.9s"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- p4 -->
+            <div class="swiper-slide">
+                <div class="p4_bg">
+                    <div class="p4_top"><img src="images/4P/top.png" alt=""></div>
+                    <div class="p4_center"><img src="images/4P/center.png" alt=""></div>
+                    <div class="p4_bottom"><img src="images/4P/bottom.png" alt=""></div>
+                    <img src="images/4P/text.png" alt="">
+                </div>
+            </div>
+            <!-- p5 -->
+            <div class="swiper-slide">
+                <div class="p5_bg">
+                    <div class="p5_top"><img src="images/5P/top.png" alt=""></div>
+                    <div class="p5_bottom">
+                        <img src="images/5P/bottom.png" alt="">
+                        <div class="datebox">
+                        <div class="date">
+                            <input type="radio" name="date" checked="checked">
+                            <img src="images/5P/date618a.png">
+                        </div>
+                        <div class="date">
+                            <input type="radio" name="date" >
+                            <img src="images/5P/date618p.png">
+                        </div> 
+                        <div class="date">
+                            <input type="radio" name="date" >
+                            <img src="images/5P/date619a.png">
+                        </div>   
+                        <div class="date">
+                            <input type="radio" name="date">
+                            <img src="images/5P/date619p.png">
+                        </div>   
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- p6 -->
+            <div class="swiper-slide">
+                <div class="p6_bg">
+                    <div class="myform">
+                        <label><span>家长姓名：</span><input id="fathername" type="text"></label>
+                        <label><span>手&#x3000;&#x3000;机：</span><input id="tel" type="tel"></label>
+                        <label><span>孩子姓名：</span><input id="childname" type="text"></label>
+                        <label><span>孩子年龄：</span><input id="childage" type="text"></label>
+                        <label><span>出席人数：</span><input id="peaplenumber" type="text"></label>
+                        <div class="submit"><img src="images/6P/submit.png" alt=""></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="arrow ani_arrow"><img src="images/arrow.png" alt=""></div> -->
+    </div>
+    <script type="text/javascript" src="js/zepto.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="js/swiper-3.2.7.jquery.min.js"></script>
+    <script type="text/javascript" src="js/swiper.animate1.0.2.min.js"></script>
+    <script type="text/javascript" src="js/tools.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        jssdk();
+        $('#swiper-container1').height($(window).height());
+        $('#swiper-container1').width($(window).width());
+        var mySwiper = new Swiper('#swiper-container1', {
+            direction: 'vertical',
+            noSwiping: true,
+            followFinger: false,
+            onInit: function(swiper) { //Swiper2.x的初始化是onFirstInit
+                swiperAnimateCache(swiper); //隐藏动画元素 
+                swiperAnimate(swiper); //初始化完成开始动画
+                swiper.slideTo(5);
+            },
+            onSlideChangeEnd: function(swiper) {
+                swiperAnimate(swiper);
+                if (mySwiper.activeIndex == 1) {
+                    mySwiper.lockSwipeToPrev()
+                } else {
+                    mySwiper.unlockSwipeToPrev();
+                }
+                
+            }
+        });
+
+        $('.submit>img').on('click', function() {
+            alert(111);
+            var fathername = $('#fathername').val();
+            var childname = $('#childname').val();
+            var childage = $('#childage').val();
+            var peaplenumber = $('#peaplenumber').val();
+            var date = $('#date').val();
+            var tel = $('#tel').val();
+            if (name == "" || tel == "") {
+                $('.dialog').css("display", "block");
+                $('.dialog .ok').on('click', function() {
+                    $('.dialog').css("display", "none");
+                });
+                return;
+            }
+            $.ajax({
+                url: '/jffatherday/submit',
+                type: 'POST',
+                data: {
+                    fathername: fathername,
+                    peaplenumber: peaplenumber,
+                    childname: childname,
+                    date: date,
+                    tel: tel,
+                    childage: childage
+                },
+                success: function(data) {
+                    mySwiper.slideNext();
+                },
+                error: function(data) {
+                    if (JSON.parse(data.response).message.code == 11000) {
+                        $('.dialog .dialogMsg').text("该用户已存在")
+                        $('.dialog').css("display", "block");
+                        $('.dialog .ok').on('click', function() {
+                            $('.dialog').css("display", "none");
+                        });
+                    } else {
+                        $('.dialog .dialogMsg').text("ajax失败了")
+                        $('.dialog').css("display", "block");
+                        $('.dialog .ok').on('click', function() {
+                            $('.dialog').css("display", "none");
+                        });
+                    }
+                }
+            });
+
+        });
+
+    })
+    </script>
+</body>
+
+</html>

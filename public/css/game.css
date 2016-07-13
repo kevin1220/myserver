@@ -1,0 +1,36 @@
+.container{
+	width: inherit;
+	text-align: justify;
+	width: 90%;
+	margin-left: 5%;
+}
+.holes {
+    width: 75px;
+    height: 75px;
+    background: red;
+    outline: 1px solid blue;
+    display: inline-block;
+}
+.pristine{
+	background:black;
+}
+.showgold{
+		-webkit-animation: showgold .3s linear 0s 1 normal both;
+	-o-animation: showgold .3s linear 0s 1 normal both;
+	animation: showgold .3s linear 0s 1 normal both;
+}
+.death{
+	background:white;
+}
+
+//黄金冒出来的动画
+@keyframes showgold{
+	to{
+		background:yellow;
+	}
+}
+@-webkit-keyframes showgold{
+	to{
+		background:yellow;
+	}	
+}

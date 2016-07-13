@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>参与名单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style type="text/css" media="screen">
+    .headimg>img {
+        max-width: 10%;
+        border-radius: 100%;
+    }
+    
+    table {
+        width: 90%;
+        margin: 5%;
+        text-align: left;
+        border: 1px solid darkgrey;
+    }
+
+    td {
+        border: 1px solid darkgrey;
+        border-color: darkgrey;
+        text-align: center;
+        margin:0;
+    }
+    
+    caption{
+        text-align: center;
+        padding:2%;
+    }
+    </style>
+</head>
+
+<body>
+    <div style="margin:5%;width:90%" id="container">
+        <table>
+            <caption>参加人员(总人数为<span id="count" style="color:red"></span>)</caption>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var container = $('#container tbody');
+        console.log(container);
+        $.ajax({
+            url: "/rotate/getGamers",
+            type: "GET",
+            success: function(data) {
+                console.log(data.length);
+                $('#count').text(data.length);
+                var tr = $("<tr></tr>");
+                for (var i = 0; i < data.length; i++) {
+                    var td = $("<td>" + data[i].nickname + "</td>");
+                    tr.append(td);
+                    if (i % 5 == 0 && i !== 0) {
+                        container.append(tr);
+                        tr = $("<tr></tr>");
+                    }
+
+                }
+            },
+            error: function() {
+
+            }
+        })
+    })
+    </script>
+</body>
+
+</html>

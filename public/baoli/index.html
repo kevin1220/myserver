@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>给力测人品</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="bg"><img src="images/index/bg.png"></div>
+    <div class="logo animated fadeInDown"><img src="images/index/1.png"></div>
+    <div class="text2 animated bounceIn"><img src="images/index/2.png" alt=""></div>
+    <div class="text3 animated bounceInUp"><img src="images/index/3.png" alt=""></div>
+    <div class="myform">
+        <div class="name"><img src="images/index/name.png" alt="">
+            <div class="inputname">
+                <input id="name" type="text" value="" name="name" placeholder="输入名字">
+            </div>
+        </div>
+        <div class="submit"><img src="images/index/submit.png"></div>
+    </div>
+    <div class="txt"><img src="images/index/txt.png"></div>
+    <div class="qrcode"><img src="images/index/qrcode.png"></div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="js/tools.js"></script>
+    <script type="text/javascript" src="js/pinyin.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        jssdk();
+        $('.submit').on('click', function() {
+            var name = $("#name").val();
+            if (name == "") {
+                alert("请输入姓名！！！");
+            } else {
+                window.localStorage.setItem("name", name);
+                location.href = "index2.html";
+            }
+
+        });
+    })
+    </script>
+</body>
+
+</html>

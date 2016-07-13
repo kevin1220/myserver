@@ -1,0 +1,6 @@
+body {
+	padding:5% 5%;
+	background: linear-gradient(to bottom, #000, #000 10%, #fff 100%) no-repeat;
+	color: #fff;
+	font-family: "微软雅黑";
+}

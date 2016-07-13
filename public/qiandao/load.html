@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>签到</title>
+    <style type="text/css">
+    .qiandao {
+        background-color: greenyellow;
+        display: inline-block;
+        padding: 0.3em;
+        color: white;
+    }
+    
+    .toGame {
+        background-color: greenyellow;
+        display: inline-block;
+        padding: 0.3em;
+        color: white;
+    }
+    </style>
+</head>
+
+<body>
+    连续签到次数：
+    <span class="signNumber">0</span>次
+    <br>
+    <div class="qiandao">签到</div>
+    <div class="toGame">抽奖</div>
+    <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+    <script type="text/javascript">
+    alert(navigator.userAgent);
+    var storage = window.localStorage;
+    var user = storage.getItem("user");
+    var openid = JSON.parse(user).openid;
+    //抽奖
+    $('.toGame').on('click', function() {
+            location.href = 'game/';
+        })
+        //签到
+    $('.qiandao').on('click', function() {
+            $.ajax({
+                url: '/qiandao/sign?openid=' + openid,
+                type: 'GET',
+                success: function(data) {
+                    console.log(data);
+                    history.go(0);
+                },
+                error: function(data) {
+                    var message = JSON.parse(data.response).message;
+                    alert(message);
+                    return;
+                }
+            })
+        })
+        //获取连续签到的次数
+    $.ajax({
+        url: '/qiandao/getSignNumber?openid=' + openid,
+        type: 'GET',
+        success: function(data) {
+            console.log(data.signNumber);
+            $('.signNumber').text(data.signNumber);
+        },
+        error: function(data) {
+
+        }
+    })
+    </script>
+</body>
+
+</html>
