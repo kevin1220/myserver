@@ -1,7 +1,7 @@
 var tools = require('../utils/tools.js');
 var request = require('request');
 var mongo = require('../routes/mongoosenew.js');
-var async = require('async');
+var async = tools.async;
 var userschema = {
     docName: {
         type: String,

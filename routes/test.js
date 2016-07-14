@@ -35,14 +35,14 @@
 // //         });
 // //     },
 // //     function(users,cb){
-// //     	// console.log(users);
+// //       // console.log(users);
 // //     }
 // // ], function(err, result) {
-// // 	if(err){
-// // 		console.log(err)
-// // 	}else{
-// // 		console.log(result);
-// // 	}
+// //   if(err){
+// //       console.log(err)
+// //   }else{
+// //       console.log(result);
+// //   }
 // // });
 // // 
 // // var a = 0;
@@ -88,7 +88,7 @@ async.waterfall([
                 cb(new Error("a不能为0"));
             } else {
                 var b = 1 / a;
-                cb(null, b); //在这里通过回调函数把b传给下一个函数，记得一定要加上null，才能调用数组中得下一个函数，否则，会直接调用最终的回调函数，然后结束函数，则后面的函数将不再执行
+                cb('finished', b); //在这里通过回调函数把b传给下一个函数，记得一定要加上null，才能调用数组中得下一个函数，否则，会直接调用最终的回调函数，然后结束函数，则后面的函数将不再执行
                 //如果这里写成cb(b);
                 //结果会变成：
                 /**
@@ -102,12 +102,12 @@ async.waterfall([
         setTimeout(function() {
             console.log("getc")
             var c = b + 1;
-            cb(c);
+            cb(null, c);
         }, 1000);
     }
 ], function(err, result) {
-    if (err) {
-        console.log(err);
+    if (err && err != 'finished') {
+        console.log("err:" + err);
     } else {
         console.log('c:' + result)
     }
@@ -229,27 +229,27 @@ async.waterfall([
 // //     return (S4() + S4() + S4() + S4() + S4() + S4() + S4() + S4());
 // // }
 // // function guid2(){
-// // 	return (((1 + Math.random()) * 0x10000000) | 0).toString(8).substring(3);
+// //   return (((1 + Math.random()) * 0x10000000) | 0).toString(8).substring(3);
 // // }
 // // var geGUID = setInterval(function(){
-// // 	var uuid = guid2();
-// // 	console.log(guid2());
-// // 	if(uuid.length!=7){
-// // 		clearInterval(geGUID);
-// // 	}
+// //   var uuid = guid2();
+// //   console.log(guid2());
+// //   if(uuid.length!=7){
+// //       clearInterval(geGUID);
+// //   }
 
 // // }, 30)
 
 // // function diyreverse(str,jinzhi){
-// // 	var resource ;
-// // 	if(str.toString().indexOf('0x')==0){
-// // 		resource = 16;
-// // 	}else if(str.indexOf('0')==0){
-// // 		resource = 8;
-// // 	}else{
-// // 		resource = 10;
-// // 	}
-// // 	console.log(resource+"转"+jinzhi+"的结果是:"+parseInt(str, resource).toString(jinzhi));
-// // 	return str.toString(jinzhi);
+// //   var resource ;
+// //   if(str.toString().indexOf('0x')==0){
+// //       resource = 16;
+// //   }else if(str.indexOf('0')==0){
+// //       resource = 8;
+// //   }else{
+// //       resource = 10;
+// //   }
+// //   console.log(resource+"转"+jinzhi+"的结果是:"+parseInt(str, resource).toString(jinzhi));
+// //   return str.toString(jinzhi);
 // // }
 // // diyreverse('0x13',10);

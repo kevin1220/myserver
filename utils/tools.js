@@ -12,10 +12,10 @@ var MyTools = {
             a.call(this, params);
         }
     },
-    execCB: function(a,err, b) {
+    execCB: function(a, err, b) {
         var params = b || {};
         if (MyTools.isfun(a)) {
-            a.call(this,err, params);
+            a.call(this, err, params);
         }
     },
     isfun: function(a) {
@@ -27,15 +27,15 @@ var MyTools = {
      * 获取UUID
      * 测试：
      * // var a = 1 + Math.random();
-    	// // var b = (a * 0x10000) | 0;
-    	// var b = Math.floor(a* 0x10000);
-    	// var c = b.toString(8);
-    	// var d = c.substring(1);
-    	// console.log(a);
-    	// console.log(b);
-    	// console.log(c);
-    	// console.log(d);
-    	// console.log(guid3());
+        // // var b = (a * 0x10000) | 0;
+        // var b = Math.floor(a* 0x10000);
+        // var c = b.toString(8);
+        // var d = c.substring(1);
+        // console.log(a);
+        // console.log(b);
+        // console.log(c);
+        // console.log(d);
+        // console.log(guid3());
      * @return {[type]} [description]
      */
     guid: function() {
@@ -72,7 +72,13 @@ var MyTools = {
         });
 
     },
-
+    showerr: function(err) {
+        console.log("myerr333:"+err);
+        if (typeof err === "object") {
+            console.log("myerr:" + JSON.stringify(err));
+        } else {
+            console.log("myerr:" + err);
+        }
+    }
 }
-
 module.exports = MyTools;

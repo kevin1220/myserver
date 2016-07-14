@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 var wechat = require('wechat');
 var wechatFuncs = require('../model/wechat.js');
-var Apiticket = require('./ticket.js');
-var apiticket = new Apiticket();
+var ticket = require('./ticket.js');
 var paySign = require('./paySign.js')
 var OAuth = require('wechat-oauth');
 var fs = require('fs');
@@ -81,13 +80,13 @@ router.get('/', function(req, res, next) {
                 if (err) {
                     cb(new Error(err));
                 } else {
-                    console.log("获取到得用户信息：" + JSON.stringify(user));
+                    console.log("获取到的用户信息：" + JSON.stringify(user));
                     cb(null, user);
                 }
             });
         },
         function(user, cb) {
-            apiticket.gettoken(appid, secret, function(token) {
+            ticket.gettoken(appid, secret, function(token) {
                 cb(null, user, token);
             });
         },
@@ -182,14 +181,11 @@ router.get('/getconf', function(req, res, next) {
     var signurl = req.query.url;
     console.log('signurl+' + signurl)
     var signature = require('./signature.js');
-
-    var ticket = '';
-    var access_token = '';
     var ret = null;
-    apiticket.gettoken(appid, secret, function(access_token) {
+    ticket.gettoken(appid, secret, function(access_token) {
         if (access_token) {
             console.log('token:' + access_token);
-            apiticket.getticket(access_token, function(ticket) {
+            ticket.getticket(access_token, function(ticket) {
                 ret = new signature(ticket, appid, signurl);
                 res.send(ret);
             });
