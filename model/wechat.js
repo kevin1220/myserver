@@ -26,38 +26,11 @@ var userschema = {
 exports.save = function(user, appflag, _callback) {
     var usersModel = mongo(appflag + '_wechat', userschema, appflag + '_wechat').model;
     var userEntity = new usersModel(user);
-    async.waterfall([
-        function(cb) {
-            usersModel.find({ "openid": user.openid }, function(err, result) {
-                if (err) {
-                    cb(new Error(err));
-                } else {
-                    cb(null, result);
-                }
-            });
-        },
-        function(result, cb) {
-            if (result.length > 0) {
-                usersModel.update({ "openid": user.openid }, { $set: user }, function(err) {
-                    if (err) {
-                        cb(new Error(err));
-                    } else {
-                        cb();
-                    }
-                });
-            } else {
-                userEntity.save(function(err) {
-                    if (err) {
-                        cb(new Error(err));
-                    } else {
-                        cb();
-                    }
-                });
-            }
-        },
-    ], function(err, result) {
-        tools.execCallBack(_callback, { err: err, message: result });
-
+    usersModel.update({ "openid": user.openid }, { $set: user },{
+        upsert:true,
+        overwrite:true
+    }, function(err) {
+        tools.execCB(_callback,err);
     });
 }
 

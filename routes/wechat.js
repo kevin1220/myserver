@@ -50,7 +50,6 @@ var shareOpenid;
 var appflag;
 var bymp;
 router.get('/', function(req, res, next) {
-
     if (req.query.shareOpenid !== undefined && shareOpenid == undefined) {
         shareOpenid = req.query.shareOpenid;
     }
@@ -103,9 +102,8 @@ router.get('/', function(req, res, next) {
             user.docName = 'wechatinfo';
             console.log("保存到数据库的数据：" + JSON.stringify(user));
             wechatFuncs.save(user, appflag, function(err) {
-
-                if (err.err) {
-                    cb(new Error(err.err));
+                if (err) {
+                    cb(new Error(err));
                 } else {
                     cb(null, user);
                 }
@@ -120,10 +118,10 @@ router.get('/', function(req, res, next) {
                 console.log("myerr:" + err);
             }
         } else {
-            console.log("赋值并跳转到loading页面:" + result);
+            console.log("shareOpenid:"+shareOpenid);
+            console.log("bymp:"+bymp);
             result.shareOpenid = shareOpenid;
             result.bymp = bymp;
-            // res.redirect(appflag + "/load.html?shareOpenid=" + shareOpenid + "&bymp=" + bymp + "&user=" + JSON.stringify(user));
             res.render('index', { message: JSON.stringify(result), appflag: appflag });
         }
     });

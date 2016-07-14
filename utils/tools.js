@@ -12,6 +12,12 @@ var MyTools = {
             a.call(this, params);
         }
     },
+    execCB: function(a,err, b) {
+        var params = b || {};
+        if (MyTools.isfun(a)) {
+            a.call(this,err, params);
+        }
+    },
     isfun: function(a) {
         if (typeof a === 'function') {
             return true;
