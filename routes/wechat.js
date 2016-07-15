@@ -7,6 +7,8 @@ var paySign = require('./paySign.js')
 var OAuth = require('wechat-oauth');
 var fs = require('fs');
 var async = require('async');
+var voice = require('../model/voice.js');
+var request = require('request');
 
 
 /*****************************应用信息的配置******************************/
@@ -48,6 +50,48 @@ var client = new OAuth(appid, secret, function(openid, callback) {
 var shareOpenid;
 var appflag;
 var bymp;
+//处理微信的语音
+router.post('/voice/save', function(req, res, next) {
+    var user = req.body;
+    var voicepath = __dirname + "/../public/cityvoice/audio/";
+    if (!fs.existsSync(voicepath)) {
+        fs.mkdirSync(voicepath);
+    }
+    async.waterfall([
+        function(cb) {
+            ticket.gettoken(appid, secret, function(token) {
+                cb(null, token);
+            });
+        },
+        function(tk, cb) {
+            //从微信服务器中根据serverid下载微信语音到指定的路径下
+            var _url = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token=' + tk + '&media_id=' + user.serverId;
+            user.path = './audio/' + user.serverId + '.mp3';
+            user.vote = 0;
+            request.get(_url).on('err', function(err) {
+                res.send(500, { message: err });
+            }).pipe(fs.createWriteStream(voicepath + user.openid + ".mp3"));
+            voice.update(user, function(err) {
+                if (err) {
+                    cb(new Error(err));
+                } else {
+                    cb(null);
+                }
+            });
+        },
+    ], function(err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            //do st.
+            res.sendStatus(200);
+        }
+    });
+
+
+});
+router.get('voice/getTwinty');
+
 router.get('/', function(req, res, next) {
     if (req.query.shareOpenid !== undefined && shareOpenid == undefined) {
         shareOpenid = req.query.shareOpenid;
@@ -117,8 +161,8 @@ router.get('/', function(req, res, next) {
                 console.log("myerr:" + err);
             }
         } else {
-            console.log("shareOpenid:"+shareOpenid);
-            console.log("bymp:"+bymp);
+            console.log("shareOpenid:" + shareOpenid);
+            console.log("bymp:" + bymp);
             result.shareOpenid = shareOpenid;
             result.bymp = bymp;
             res.render('index', { message: JSON.stringify(result), appflag: appflag });
