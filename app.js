@@ -18,6 +18,7 @@ var hrth = require('./routes/hrth.js');
 var xktfw = require('./routes/xktfw.js');
 var qiandao = require('./routes/qiandao.js');
 var mongoose = require('mongoose');
+var article = require('./routes/wmp/article.js');
 
 /***********************************链接到数据库*********************************************/
 var uri = 'mongodb://127.0.0.1/myserver';
@@ -104,7 +105,7 @@ app.use('/baoli', baoli);
 app.use('/hrth', hrth);
 app.use('/xktfw', xktfw);
 app.use('/qiandao', qiandao);
-
+app.use('/wmp/article', article);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

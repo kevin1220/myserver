@@ -13,10 +13,10 @@ var request = require('request');
 
 /*****************************应用信息的配置******************************/
 
-// var appid = 'wx00a1c8d384eff1f3';
-// var secret = '2e1add79b87b207bd4ea9cc25d1ccf51';
-var appid = 'wx43233b4496331a8a';
-var secret = 'c61c11c4c6170e4eaa554d9d147969b9';
+var appid = 'wx00a1c8d384eff1f3';
+var secret = '2e1add79b87b207bd4ea9cc25d1ccf51';
+// var appid = 'wx43233b4496331a8a';
+// var secret = 'c61c11c4c6170e4eaa554d9d147969b9';
 var token = 'mymp';
 var encodingAESKey = 'QglgjwQiCEAhvhrd7Y7pou5DSQOwE6upNP3c2dguOYy';
 var domainName = 'http://www.wit-orange.com';
