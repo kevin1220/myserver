@@ -10,7 +10,6 @@ var secret = '2e1add79b87b207bd4ea9cc25d1ccf51';
 /* GET home page. */
 router.get('/getarticles', function(req, res, next) {
     var page = req.query.page;
-    console.log("page:" + page);
     async.waterfall([
         function(cb) {
             ticket.gettoken(appid, secret, function(token) {
@@ -19,8 +18,8 @@ router.get('/getarticles', function(req, res, next) {
         },
         function(tk, cb) {
             var _url = "https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token=" + tk;
-            request.get(_url, function(err, resp) {
-                cb(null, tk, resp.news_count);
+            request.get(_url, { json: true }, function(err, response, body) {
+                cb(null, tk, body.news_count);
             });
         },
         function(tk, sum, cb) {
@@ -35,14 +34,16 @@ router.get('/getarticles', function(req, res, next) {
                 count = condition + 20;
             }
             var _url = "https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=" + tk;
-            request.post({
+            request({
+                method: 'POST',
                 url: _url,
-                form: {
-                    type: 'news',
-                    offset: offset,
-                    count: count
+                json: true,
+                body: {
+                    "type": "news",
+                    "offset": offset,
+                    "count": count
                 },
-            }, function(err, httpResponse, body) {
+            }, function(err, response, body) {
                 if (err) {
                     cb(new Error(err));
                 } else {
@@ -51,8 +52,9 @@ router.get('/getarticles', function(req, res, next) {
             });
         },
     ], function(err, result) {
+        console.log(result);
         if (err) {
-            console.log(err);
+            res.send(500, { message: err });
         } else {
             // do st.
             res.send(result);
