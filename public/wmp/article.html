@@ -13,24 +13,26 @@
     <meta name="format-detection" content="telphone=no, email=no">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/article.css">
-    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/vue.min.js"></script>
-    <script type="text/javascript" src="js/article.js"></script>
+    
 </head>
 
 <body>
     <!-- 广告图 -->
     <!-- 文章列表 -->
-    <div id="articles" v-for="article in articles">
-        <div class="list_group">
-            <div class="list_top"><img :src="article.url" alt=""></div>
-            <div class="list_body">
-                <div class="list_body_title">{{article.title}}</div>
-                <div class="list_body_content">{{article.content}}</div>
+    <div id="articles">
+        <div v-for="article in articles">
+            <div class="list_group">
+                <!-- <div class="list_top"><img :src="article.url" alt=""></div> -->
+                <div class="list_body">
+                    <a class="list_body_title" :href="article.content.news_item[0].url">{{article.content.news_item[0].title}}</a>
+                </div>
             </div>
         </div>
+        <div v-if="seemore" class="seemore" @click="getmore">查看更多...</div>
     </div>
-    <div v-if="seemore" class="seemore" @click="seemore">查看更多...</div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    <script type="text/javascript" src="js/article.js"></script>
 </body>
 
 </html>
