@@ -83,8 +83,6 @@ var RedPackage = function(key, mch_id, wxappid, send_name, re_openid, mch_id, to
         var sign = md5(stringSignTemp).toUpperCase();
         return sign;
     }
-
-
 }
 
 module.exports = RedPackage;

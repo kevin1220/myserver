@@ -3,6 +3,8 @@ var router = express.Router();
 var request = require('request');
 var ticket = require('../ticket.js');
 var async = require('async');
+var fs = require('fs');
+var moment = require('moment');
 
 
 var appid = 'wx00a1c8d384eff1f3';
@@ -51,8 +53,34 @@ router.get('/getarticles', function(req, res, next) {
                 }
             });
         },
+        function(articles, cb) {
+            //保存图片到服务器
+            var path = __dirname + "/../../public/wmp/images/temp";
+            if (!fs.existsSync(path)) {
+                fs.mkdirSync(path);
+            }
+            async.map(articles.item, function(article, callback_) {
+                var imgurl = article.content.news_item[0].thumb_url;
+                var filename = article.media_id;
+                var filetype = ".jqg";
+                request(imgurl)
+                    .on("response", function(response) {
+                        filetype = response.headers['content-type'].replace(/image\/(.*)/i, "$1");
+                    })
+                    .pipe(fs.createWriteStream(path + filename + filetype));
+                article.content.news_item[0].thumb_url = "./images/temp" + filename + filetype;
+                article.update_time = moment.unix(article.update_time).format("YYYY-MM-DD HH:mm:ss");
+                callback_(null, article);
+            }, function(err, result) {
+                if (err) {
+                    cb(new Error(err));
+                } else {
+                    cb(null, result);
+                }
+            });
+        }
     ], function(err, result) {
-        console.log(result);
+
         if (err) {
             res.send(500, { message: err });
         } else {

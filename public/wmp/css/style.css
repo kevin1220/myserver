@@ -1,7 +1,41 @@
-html,body{
-	height: 100%;
+html,
+body {
+    height: 100%;
 }
-body{
-	margin: 0;
-	padding: 0;
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    top: 0;
+    position: fixed;
+    height: 44px;
+    width: 100%;
+    z-index: 2;
+}
+
+.page_head {
+    text-align: center;
+    width: inherit;
+    height: inherit;
+    background: black;
+    line-height: 44px;
+    color: #fff;
+    font-size: 24px;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    text-decoration: none;
+    cursor: auto;
+    color: #626262;
+}
+
+a:any-link {
+    color: -webkit-link;
+    text-decoration: none;
+    cursor: auto;
+    color: #626262;
 }

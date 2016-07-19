@@ -13,25 +13,46 @@
     <meta name="format-detection" content="telphone=no, email=no">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/article.css">
-    
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script type="text/javascript" src="js/swiper.min.js"></script>
 </head>
 
 <body>
+    <div class="header">
+        <div class="page_head"><img src="images/more2.png" class="icon_more2">智讯互动<img src="images/search.png" class="icon_search"></div>
+    </div>
     <!-- 广告图 -->
+    <div class="swiper-container" id="swiper-container1">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/ad/1.jpg"></div>
+            <div class="swiper-slide"><img src="images/ad/2.jpg"></div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+    </div>
     <!-- 文章列表 -->
     <div id="articles">
-        <div v-for="article in articles">
-            <div class="list_group">
-                <!-- <div class="list_top"><img :src="article.url" alt=""></div> -->
+        <div v-for="article in articles" class="list">
+            <div class="list_group" @click="gotosource(article.content.news_item[0].url)">
+                <div class="list_top"><img :src="article.content.news_item[0].thumb_url" alt=""></div>
                 <div class="list_body">
-                    <a class="list_body_title" :href="article.content.news_item[0].url">{{article.content.news_item[0].title}}</a>
+                    <div class="list_body_title">{{article.content.news_item[0].title}}</div>
                 </div>
+                <div class="list_foot">
+                    <div class="list_foot_left"><img src="images/time.png"><span>更新于{{article.update_time}}</span><i></i></div>
+                    <div class="list_foot_right"><a :href="article.content.news_item[0].url">阅读原文</a><img src="images/more.png"><i></i></div>
+                    <i></i>
+                </div>
+                <hr>
             </div>
         </div>
         <div v-if="seemore" class="seemore" @click="getmore">查看更多...</div>
     </div>
+    <div class="page_foot"></div>
     <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script type="text/javascript" src="js/vue.min.js"></script>
+    <script type="text/javascript" src="js/tools.js"></script>
     <script type="text/javascript" src="js/article.js"></script>
 </body>
 
